@@ -1,3 +1,29 @@
-<md-list *ngFor="let item of items">
-  <md-list-item> {{ item }}</md-list-item>
-</md-list>
+<div id="waffle-list-container">
+  <md-card class="waffle-list">
+    <md-card-header>
+       <div md-card-avatar>
+         <img src="https://akimg2.ask.fm/assets2/060/372/337/664/normal/av_e1019141bd22089d0fff2701ddac2914.jpg" alt="">
+       </div>
+      <md-card-title>Courses</md-card-title>
+      <md-card-subtitle>Le gras, c'est la vie!</md-card-subtitle>
+    </md-card-header>
+    <div class="waffle-list-illustration">
+            <img src="http://i.imgur.com/Ajlyv.jpg">
+    </div>
+    <md-card-content>
+      <p>
+        Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi. 
+        Il faut qu'on se repartisse les achats pour la soirée ;).
+      </p>
+
+      <md-list *ngFor="let item of items">
+        
+        <md-list-item> 
+          <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
+          <md-checkbox></md-checkbox>
+          {{ item }}
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>

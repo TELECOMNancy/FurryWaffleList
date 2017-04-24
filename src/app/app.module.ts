@@ -1,27 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
-import {MdListModule} from '@angular/material';
-import {MdCardModule} from '@angular/material';
-import {MdButtonModule} from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
-
-import {Router} from '@angular/router';
-
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { ListsComponent } from './lists/lists.component';
 import { AppRoutingModule } from './app-routing.module';
-
 import { ListComponent } from './list/list.component';
-import { RouterModule } from '@angular/router';
-import { MdIconModule } from '@angular/material';
-import { ListsService } from './providers/lists.service';
 import { WelcomeComponent } from './welcome/welcome.component';
-import {MdInputModule} from '@angular/material';
+import { ListsService } from './providers/lists.service';
+
 
 
 export const firebaseConfig = {
@@ -42,15 +32,9 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    BrowserAnimationsModule,
+    SharedModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
-    MdListModule,
-    MdCardModule,
-    MdSidenavModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule
   ],
   providers: [ListsService],
   bootstrap: [AppComponent]

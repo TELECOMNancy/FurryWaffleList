@@ -1,11 +1,13 @@
 import { Component, OnInit} from '@angular/core';
 import { MdListModule } from '@angular/material';
 import { ActivatedRoute, Params } from '@angular/router';
+import {MdToolbarModule} from '@angular/material';
+import {MdCheckboxModule} from '@angular/material';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
   items = ['test', 'test2', 'test3'];
