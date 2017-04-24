@@ -14,7 +14,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
