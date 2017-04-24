@@ -12,8 +12,22 @@
 			</md-list>
 		</div>
 	</md-sidenav>
-	<button md-mini-fab (click)="sidenav.toggle()" class="sidenav_container_icon"><md-icon>menu</md-icon></button>
-	<div class="main_page">
-		<router-outlet></router-outlet>
+	<div class="main_page_container">
+		<button md-mini-fab (click)="sidenav.toggle()" class="sidenav_icon_container">
+			<md-icon>menu</md-icon>
+		</button>
+		<div class="main_page">
+			<md-toolbar>
+				<img src="assets/logo_simple_right.png" class="logo">
+				<p>Furry Waffle Amazing Lists</p>
+				<!--
+				<md-toolbar-row>
+					<img src="assets/logo.png" class="logo">
+				</md-toolbar-row>
+				-->
+			</md-toolbar>
+
+			<router-outlet></router-outlet>
+		</div>
 	</div>
 </md-sidenav-container>

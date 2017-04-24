@@ -20,12 +20,23 @@ md-sidenav-container {
     float: right;
 }
 
-.sidenav_container_icon {
+.main_page_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidenav_icon_container {
     margin-left: 10px;
+    margin-right: 10px;
     margin-top: 10px;
 }
 
 .main_page {
-    margin-left: 10px;
-    margin-top: 10px;
+	width: 100%;
+}
+
+.logo {
+	width: 40px;
+	margin-left: 20px;
+	margin-right: 50px;
 }
