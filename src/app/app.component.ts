@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,6 @@ export class AppComponent {
 constructor(private router: Router) {}
 
 onclick_lists() {
-  this.router.navigate(['/lists']);
+  this.router.navigate(['/lists'])
   }
 }

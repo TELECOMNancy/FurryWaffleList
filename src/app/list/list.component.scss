@@ -1,5 +1,5 @@
 #waffle-list-container {
-    padding: 2% 25%;
+    padding: 5% 25%;
 }
 
 .deleteButton {
@@ -55,5 +55,17 @@ md-card-header div img {
         right: 0;
         bottom: 0;
         z-index: 200;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #waffle-list-container {
+        padding: 8% 10%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #waffle-list-container {
+        padding: 8% 5%;
     }
 }

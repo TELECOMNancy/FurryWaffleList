@@ -1,6 +1,6 @@
-<div class="lists-container">	
+<div class="lists-container">
 
-	<md-card class="ListsContainer" *ngFor="let list of lists | async">
+	<md-card *ngFor="let list of lists | async">
 
 		<div *ngIf="keyEditedList == list.$key ; else elseBlock">
 		<md-input-container>

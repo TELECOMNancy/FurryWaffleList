@@ -1,15 +1,19 @@
-div {
+.lists-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: flex-start;
+    margin: 2px;
+    padding: 12px;
 }
 
 md-card {
     display: inline-block;
+    margin: 6px;
 }
 
-.ListsContainer {
-    margin: 2px;
+@media screen and (max-width: 640px) {
+    .lists-container {
+        justify-content: center;
+        flex-direction: column;
+    }
 }
-
