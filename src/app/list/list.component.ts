@@ -11,15 +11,25 @@ import { ListsService } from '../providers/lists.service'
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  // items = ['test', 'test2', 'test3']
+  items = ['test', 'test2', 'test3']
   list: FirebaseObjectObservable<any>
+  itemInput: string
 
   constructor(private route: ActivatedRoute, private service: ListsService ) {
+    this.itemInput = ''
   }
 
   ngOnInit() {
     const key: string = this.route.snapshot.params['key']
     this.list = this.service.getList(key)
+  }
+
+  updateItem(item) {
+  }
+
+  addItem(event) {
+    console.log(`TODO - ADD '${this.itemInput}' item `)
+    this.itemInput = ''
   }
 
 }
