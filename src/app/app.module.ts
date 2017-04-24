@@ -12,7 +12,9 @@ import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
+import { MdIconModule } from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -25,7 +27,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     ListsComponent,
-    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,9 @@ export const firebaseConfig = {
     AppRoutingModule,
     MdListModule,
     MdCardModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdButtonModule,
+    MdIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
