@@ -4,7 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
+
+import {MdListModule} from '@angular/material';
+import {MdCardModule} from '@angular/material';
+
 import { AppComponent } from './app.component';
+import { ListsComponent } from './lists/lists.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MdSidenavModule } from '@angular/material';
@@ -19,7 +24,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent,
+    ListsComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +34,9 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MdSidenavModule,
+    MdListModule,
+    MdCardModule,
+    MdSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
