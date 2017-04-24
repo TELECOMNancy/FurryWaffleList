@@ -1,10 +1,8 @@
-import { Component, OnInit} from '@angular/core';
-import { MdListModule } from '@angular/material';
-import { ActivatedRoute, Params } from '@angular/router';
-import {MdToolbarModule} from '@angular/material';
-import {MdCheckboxModule} from '@angular/material';
-
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Component, OnInit} from '@angular/core'
+import { MdListModule } from '@angular/material'
+import { ActivatedRoute, Params } from '@angular/router'
+import { AngularFire, FirebaseListObservable } from 'angularfire2'
+import { ListsService } from '../providers/lists.service'
 
 @Component({
   selector: 'app-list',
@@ -12,27 +10,28 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  items = ['test', 'test2', 'test3'];
-  address: any;
-  itemElements: FirebaseListObservable<any[]>;
+
+  address: any
+  itemElements: FirebaseListObservable<any[]>
+  errorMessage: String
 
   constructor(private af: AngularFire, private route: ActivatedRoute) {
-    const key = this.route.snapshot.params['key'];
-    this.itemElements = af.database.list('/lists/' + key + '/items');
+    const key = this.route.snapshot.params['key']
+    this.itemElements = af.database.list('/lists/' + key + '/items')
   console.log(this.itemElements.subscribe( res => {
-    console.log(res);
-  }));
+    console.log(res)
+  }))
   }
 
   ngOnInit() {
-    this.address = this.route.snapshot.params['key'];
+    this.address = this.route.snapshot.params['key']
   }
 
-  addElement(value: String) {
+
+  deleteElement(key: string) {
+    this.itemElements.remove(key)
   }
 
-  deleteElement() {
 
-  }
 
 }

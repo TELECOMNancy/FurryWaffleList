@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
-import {MdListModule} from '@angular/material';
-import {MdCardModule} from '@angular/material';
-import {MdButtonModule} from '@angular/material';
-import {Router} from '@angular/router';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
-import { ListsService } from '../providers/lists.service';
+import {MdListModule} from '@angular/material'
+import {MdCardModule} from '@angular/material'
+import {MdButtonModule} from '@angular/material'
+import {Router} from '@angular/router'
+import {AngularFire, FirebaseListObservable} from 'angularfire2'
+import { ListsService } from '../providers/lists.service'
 
 
 @Component({
@@ -16,19 +16,29 @@ import { ListsService } from '../providers/lists.service';
 })
 export class ListsComponent implements OnInit {
 
-  lists: FirebaseListObservable<any[]>;
+
+  lists: FirebaseListObservable<any[]>
+  keyEditedList: string = ""
 
   constructor(private af: AngularFire , private router: Router) { }
 
   ngOnInit() {
-    this.lists = this.af.database.list('/lists');
+
+    this.lists = this.af.database.list('/lists')
   }
 
-  onSelect(list: String): void {
-    this.router.navigate(['lists/' + list]);
-  }
-  deleteList(list: string): void {
-    this.lists.remove(list);
+  onSelect(keylist: String): void {
+    this.router.navigate(['lists/' + keylist])
   }
 
+  deleteList(keylist: string): void {
+    this.lists.remove(keylist)
+  }
+  EditName(keylist: string): void {
+    this.keyEditedList = keylist
+  }
+  ValideChange(keylist : string, listname: String) {
+     this.lists.update(keylist, {name: listname})
+     this.keyEditedList = ""
+  }
 }
