@@ -1,17 +1,33 @@
 <md-sidenav-container>
-	<md-sidenav #sidenav mode="side">
-		<md-list>
-			<md-list-item><button md-button>Connexion</button></md-list-item>
-  				<md-divider></md-divider>
-			<md-list-item><button md-button>Listes publiques</button></md-list-item>
-			<md-list-item><button md-button>Mes listes</button></md-list-item>
-			<md-divider></md-divider>
-			<md-list-item><button md-button>À propos</button></md-list-item>
-		</md-list>
+	<md-sidenav #sidenav mode="over">
+		<button md-mini-fab (click)="sidenav.toggle()" class="sidenav_icon"><md-icon>menu</md-icon></button>
+		<div class="sidenav_menu">
+			<md-list>
+				<md-list-item><button md-button>Connexion</button></md-list-item>
+	  				<md-divider></md-divider>
+				<md-list-item><button md-button>Listes publiques</button></md-list-item>
+				<md-list-item><button md-button>Mes listes</button></md-list-item>
+				<md-divider></md-divider>
+				<md-list-item><button md-button>À propos</button></md-list-item>
+			</md-list>
+		</div>
 	</md-sidenav>
-	<button md-mini-fab (click)="sidenav.toggle()" class="sidenav_icon"><md-icon>menu</md-icon></button>
-	<div class="main_page">
-		{{title}}
-		<router-outlet></router-outlet>
+	<div class="main_page_container">
+		<button md-mini-fab (click)="sidenav.toggle()" class="sidenav_icon_container">
+			<md-icon>menu</md-icon>
+		</button>
+		<div class="main_page">
+			<md-toolbar>
+				<img src="assets/logo_simple_right.png" class="logo">
+				<p>Furry Waffle Amazing Lists</p>
+				<!--
+				<md-toolbar-row>
+					<img src="assets/logo.png" class="logo">
+				</md-toolbar-row>
+				-->
+			</md-toolbar>
+
+			<router-outlet></router-outlet>
+		</div>
 	</div>
 </md-sidenav-container>

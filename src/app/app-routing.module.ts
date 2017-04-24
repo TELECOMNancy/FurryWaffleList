@@ -5,12 +5,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { ListComponent } from './list/list.component';
 import { ListsComponent } from './lists/lists.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: NotFoundComponent
+    component: WelcomeComponent
   },
   {
     path: 'lists/:key',

@@ -1,4 +1,5 @@
 <div class="lists-container">	
+
 	<md-card class="ListsContainer" *ngFor="let list of lists | async">
 		<button md-button (click)="onSelect(list.$key)" >
 			{{list.name}}
