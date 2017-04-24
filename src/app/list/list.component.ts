@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
-import { MdListModule } from '@angular/material';
-import { ActivatedRoute, Params } from '@angular/router';
-import {MdToolbarModule} from '@angular/material';
-import {MdCheckboxModule} from '@angular/material';
+import { Component, OnInit} from '@angular/core'
+import { MdListModule } from '@angular/material'
+import { ActivatedRoute, Params } from '@angular/router'
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2'
+import { ListsService } from '../providers/lists.service'
+
 
 @Component({
   selector: 'app-list',
@@ -10,16 +11,15 @@ import {MdCheckboxModule} from '@angular/material';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  items = ['test', 'test2', 'test3'];
-  address: any;
+  // items = ['test', 'test2', 'test3']
+  list: FirebaseObjectObservable<any>
 
-  constructor(private route: ActivatedRoute) {
-    console.log(this.route.params['key']);
+  constructor(private route: ActivatedRoute, private service: ListsService ) {
   }
 
   ngOnInit() {
-    this.address = this.route.snapshot.params['key'];
-    console.log(this.address);
+    const key: string = this.route.snapshot.params['key']
+    this.list = this.service.getList(key)
   }
 
 }

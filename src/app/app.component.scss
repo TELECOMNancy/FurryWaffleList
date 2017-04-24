@@ -36,3 +36,7 @@ md-sidenav-container {
 	margin-left: 20px;
 	margin-right: 50px;
 }
+
+md-sidenav-container md-list-item a {
+    color: black !important;
+}
