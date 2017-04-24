@@ -11,10 +11,14 @@ import {MdCardModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
 import { AppRoutingModule } from './app-routing.module';
+
+import { ListComponent } from './list/list.component';
+import { RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -26,6 +30,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    ListComponent,
     ListsComponent,
   ],
   imports: [
@@ -41,7 +46,7 @@ export const firebaseConfig = {
     MdButtonModule,
     MdIconModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
