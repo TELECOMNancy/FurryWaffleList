@@ -15,9 +15,11 @@ import {Router} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SidenavComponent } from './sidenav/sidenav.component';
 
-
+import { ListComponent } from './list/list.component';
+import { RouterModule } from '@angular/router';
+import { MdIconModule } from '@angular/material';
+import { ListsService } from './providers/lists.service';
 
 
 export const firebaseConfig = {
@@ -30,8 +32,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    ListComponent,
     ListsComponent,
-    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +44,11 @@ export const firebaseConfig = {
     AppRoutingModule,
     MdListModule,
     MdCardModule,
+    MdSidenavModule,
     MdButtonModule,
-    MdSidenavModule
+    MdIconModule,
   ],
-  providers: [],
+  providers: [ListsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
