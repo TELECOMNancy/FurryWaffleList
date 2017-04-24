@@ -24,8 +24,8 @@ export class ListsComponent implements OnInit {
     this.lists = this.af.database.list('/lists');
   }
 
-  onSelect(patate: String): void {
-    this.router.navigate(['lists/'+patate]);
+  onSelect(list: String): void {
+    this.router.navigate(['lists/'+list]);
   }
 
 }
