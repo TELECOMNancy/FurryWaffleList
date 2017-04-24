@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
 import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
-
+import { ListsService } from './providers/lists.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -45,7 +45,7 @@ export const firebaseConfig = {
     MdButtonModule,
     MdIconModule,
   ],
-  providers: [ ],
+  providers: [ListsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
