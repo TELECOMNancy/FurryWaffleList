@@ -17,6 +17,7 @@ import { ListsService } from '../providers/lists.service';
 export class ListsComponent implements OnInit {
 
   lists: FirebaseListObservable<any[]>;
+  keyEditedList: string = "";
 
   constructor(private af: AngularFire , private router: Router) { }
 
@@ -25,11 +26,17 @@ export class ListsComponent implements OnInit {
     this.lists.forEach(s => console.log(s["0"].$key));
   }
 
-  onSelect(list: String): void {
-    this.router.navigate(['lists/' + list]);
+  onSelect(keylist: String): void {
+    this.router.navigate(['lists/' + keylist]);
   }
-  deleteList(list: string): void {
-    this.lists.remove(list); 
+  deleteList(keylist: string): void {
+    this.lists.remove(keylist);
   }
-
+  EditName(keylist: string):void {
+    this.keyEditedList = keylist;
+  }
+  ValideChange(keylist : string, listname: String){
+     this.lists.update(keylist, {name: listname})
+     this.keyEditedList = "";
+  }
 }
