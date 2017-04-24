@@ -24,8 +24,8 @@ export class WelcomeComponent implements OnInit {
   createList(listName: String) {
      if (listName.length > 0) {
       this.errorMessage = '';
-      this.lists.push({name: listName});
-      this.router.navigate(['lists/' + listName]);
+      const id = this.lists.push({name: listName}).key;
+      this.router.navigate(['lists/' + id]);
     } else {
       this.errorMessage = 'Enter a message please.';
     }

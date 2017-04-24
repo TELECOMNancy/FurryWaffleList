@@ -18,14 +18,15 @@ export class ListsComponent implements OnInit {
 
   lists: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFire , private router:Router) { }
+  constructor(private af: AngularFire , private router: Router) { }
 
   ngOnInit() {
     this.lists = this.af.database.list('/lists');
+    this.lists.forEach(s => console.log(s["0"].$key));
   }
 
   onSelect(list: String): void {
-    this.router.navigate(['lists/'+list]);
+    this.router.navigate(['lists/' + list]);
   }
 
 }
