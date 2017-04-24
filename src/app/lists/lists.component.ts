@@ -27,5 +27,8 @@ export class ListsComponent implements OnInit {
   onSelect(list: String): void {
     this.router.navigate(['lists/'+list]);
   }
+  deleteList(list: string): void {
+    this.lists.remove(list); 
+  }
 
 }

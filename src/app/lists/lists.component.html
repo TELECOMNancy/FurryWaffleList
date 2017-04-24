@@ -1,5 +1,11 @@
 <div class="lists-container">	
-	<button md-raised-button class="ListsContainer" *ngFor="let list of lists | async" (click)="onSelect(lists.key)" >
+	<md-card class="ListsContainer" *ngFor="let list of lists | async">
+		<button md-button (click)="onSelect(list.$key)" >
 			{{list.name}}
-	</button>
+		</button>
+		<button md-mini-fab (click)="deleteList(list.$key)" >
+				<md-icon>delete</md-icon> 
+			</button>
+	</md-card>
+	
 </div>
