@@ -1,6 +1,7 @@
-<md-list *ngIf="LISTES">
-	<md-card>{{LISTES}}</md-card>
+<md-list *ngFor="let patate of LISTES">
+	<md-card class="ListsContainer">
+		<md-card-title>{{patate}}</md-card-title>
+	</md-card>
 </md-list>
-<p> coucou </p>
 
 
