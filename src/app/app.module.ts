@@ -18,6 +18,8 @@ import { MdButtonModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
 import { ListsService } from './providers/lists.service';
+import { WelcomeComponent } from './welcome/welcome.component';
+import {MdInputModule} from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -31,6 +33,7 @@ export const firebaseConfig = {
     AppComponent,
     ListComponent,
     ListsComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ export const firebaseConfig = {
     MdSidenavModule,
     MdButtonModule,
     MdIconModule,
+    MdInputModule
   ],
   providers: [ListsService],
   bootstrap: [AppComponent]

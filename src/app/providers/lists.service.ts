@@ -3,9 +3,10 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 @Injectable()
 export class ListsService {
 
-  private lists: FirebaseListObservable<any[]>;
+  lists: FirebaseListObservable<any[]>;
 
   constructor(public af: AngularFire) { }
+
 
   getLists(): FirebaseListObservable<any[]>  {
     return this.af.database.list('/lists');
