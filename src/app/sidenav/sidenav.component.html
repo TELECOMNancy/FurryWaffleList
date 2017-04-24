@@ -1,6 +1,15 @@
 <md-sidenav-container>
-	<md-sidenav>
-		<img src="../assets/mlp.jpg">
+	<md-sidenav #sidenav>
+		<i class="material-icons">menu</i>
+		<ul>
+			<li>Connexion</li>
+			<hr>
+			<li>Listes publiques</li>
+			<li>Mes listes</li>
+			<hr>
+			<li>À propos</li>
+		</ul>
+		<!-- <img src="../assets/jlm.jpg" (click)="sidenav.toggle()"> -->
 	</md-sidenav>
-	<img src="../assets/jlm.jpg">
+	<img src="../assets/jlm.jpg" (click)="sidenav.toggle()">
 </md-sidenav-container>
