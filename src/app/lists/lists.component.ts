@@ -16,7 +16,7 @@ import { ListsService } from '../providers/lists.service';
 })
 export class ListsComponent implements OnInit {
 
-  private lists: FirebaseListObservable<any[]>;
+  lists: FirebaseListObservable<any[]>;
 
   constructor(private af: AngularFire , private router:Router) { }
 
