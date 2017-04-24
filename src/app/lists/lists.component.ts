@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MdListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
+import {MdButtonModule} from '@angular/material';
+import {Router} from '@angular/router';
 
 
 
@@ -21,9 +23,12 @@ export class ListsComponent implements OnInit {
   'Omelette du fromage' 
 ];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
+  onSelect(patate: String): void {
+    this.router.navigate(['lists/'+patate]);
+  }
 }

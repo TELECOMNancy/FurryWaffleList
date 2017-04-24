@@ -1,7 +1,9 @@
-<md-list *ngFor="let patate of LISTES">
-	<md-card class="ListsContainer">
-		<md-card-title>{{patate}}</md-card-title>
-	</md-card>
-</md-list>
+<section *ngFor="let patate of LISTES" >
+	<button md-raised-button (click)="onSelect(list)" >
+			{{patate}}
+	</button>
+</section>
+
+
 
 

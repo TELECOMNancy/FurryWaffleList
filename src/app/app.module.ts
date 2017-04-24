@@ -7,12 +7,18 @@ import { AngularFireModule } from 'angularfire2';
 
 import {MdListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
+import {MdButtonModule} from '@angular/material';
+import { MdSidenavModule } from '@angular/material';
+
+import {Router} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { MdSidenavModule } from '@angular/material';
+
+
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -36,6 +42,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     MdListModule,
     MdCardModule,
+    MdButtonModule,
     MdSidenavModule
   ],
   providers: [],
