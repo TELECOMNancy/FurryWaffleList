@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
+import {MdListModule} from '@angular/material';
+import {MdCardModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { ListsComponent } from './lists/lists.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -15,7 +18,8 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
