@@ -1,4 +1,4 @@
-# SuperList
+# Furry Waffle Amazing Lists
 [![Build Status](https://travis-ci.com/TELECOMNancy/pweb-2017-team-fomo.svg?token=3ynpP6sMf9HteH2PVfmd&branch=master)](https://travis-ci.com/TELECOMNancy/pweb-2017-team-fomo)
 
 Note: To skip a build, write in commit message [ci skip]
