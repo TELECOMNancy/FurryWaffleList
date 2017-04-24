@@ -1,7 +1,5 @@
 <div class="lists-container">	
-	<md-card class="ListsContainer" *ngFor="let list of lists | async">
-		{{list.name}}
-	</md-card>
+	<button md-raised-button class="ListsContainer" *ngFor="let list of lists | async" (click)="onSelect(lists.key)" >
+			{{list.name}}
+	</button>
 </div>
-
-

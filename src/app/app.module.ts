@@ -7,6 +7,10 @@ import { AngularFireModule } from 'angularfire2';
 
 import {MdListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
+import {MdButtonModule} from '@angular/material';
+import { MdSidenavModule } from '@angular/material';
+
+import {Router} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
@@ -14,12 +18,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
-import { MdButtonModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
 import { ListsService } from './providers/lists.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {MdInputModule} from '@angular/material';
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
