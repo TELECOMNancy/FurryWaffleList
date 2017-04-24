@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ListComponent } from './list/list.component';
+import { MdListModule} from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -16,15 +19,17 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AppRoutingModule
+    AppRoutingModule,
+    MdListModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
