@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdSidenavModule } from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -16,13 +19,16 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MdSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
