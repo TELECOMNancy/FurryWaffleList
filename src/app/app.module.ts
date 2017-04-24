@@ -1,30 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { HttpModule } from '@angular/http'
+import { AngularFireModule } from 'angularfire2'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ListModule } from './list/list.module'
+import { AppComponent } from './app.component'
+import { SharedModule } from './shared/shared.module'
+import { ListsComponent } from './lists/lists.component'
+import { AppRoutingModule } from './app-routing.module'
+import { ListComponent } from './list/list.component'
+import { WelcomeComponent } from './welcome/welcome.component'
+import { ListsService } from './providers/lists.service'
+import { MdToolbarModule } from '@angular/material'
 
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { ListsComponent } from './lists/lists.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ListComponent } from './list/list.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { ListsService } from './providers/lists.service';
-import { MdToolbarModule } from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
   authDomain: 'furrywafflelist.firebaseapp.com',
   databaseURL: 'https://furrywafflelist.firebaseio.com',
   storageBucket: 'bucket.appspot.com'
-};
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
     ListsComponent,
     WelcomeComponent,
   ],
@@ -34,6 +34,8 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     SharedModule,
+    BrowserAnimationsModule,
+    ListModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
     MdToolbarModule,
