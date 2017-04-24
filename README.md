@@ -1,4 +1,33 @@
 # SuperList
+[![Build Status](https://travis-ci.com/TELECOMNancy/pweb-2017-team-fomo.svg?token=3ynpP6sMf9HteH2PVfmd&branch=master)](https://travis-ci.com/TELECOMNancy/pweb-2017-team-fomo)
+
+## RoadMap
+
+### J1: 
+
+* Affichage de liste globale
+* Création d'une liste
+* Edition d'une liste
+* Ajouter un élément à une liste
+* Supprimer un élément d'une liste
+* Éditer un élément d'une liste
+* Suppression d'une liste
+
+### J2: 
+
+* Connexion via OAuth
+* Système de vote
+* Checkbox
+* Gestion de liste privé
+* Partage de liste
+
+### J3: 
+
+* Gestion des utilisateurs
+* Export CSV
+
+
+## Dev notes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
