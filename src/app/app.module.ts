@@ -11,8 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListComponent } from './list/list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ListsService } from './providers/lists.service';
-
-
+import { MdToolbarModule } from '@angular/material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAPMbmzPT5l8CvM0HgSeb6NAB1_J5jW0I8',
@@ -35,6 +34,7 @@ export const firebaseConfig = {
     SharedModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
+    MdToolbarModule,
   ],
   providers: [ListsService],
   bootstrap: [AppComponent]
