@@ -4,7 +4,7 @@
 }
 
 .deleteButton {
-    margin: 2px;
+    margin: 10px;
 }
 
 .waffle-list {
@@ -15,6 +15,14 @@
     }
     md-card-header {
         padding-bottom: 0;
+    }
+}
+
+
+#input-item {
+    md-input-container {
+        margin-top: 20px;
+        width: 100%;
     }
 }
 

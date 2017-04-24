@@ -18,7 +18,7 @@ export class ListsComponent implements OnInit {
 
 
   lists: FirebaseListObservable<any[]>
-  keyEditedList: string = ""
+  keyEditedList = ''
 
   constructor(private af: AngularFire , private router: Router) { }
 
@@ -37,8 +37,10 @@ export class ListsComponent implements OnInit {
   EditName(keylist: string): void {
     this.keyEditedList = keylist
   }
-  ValideChange(keylist : string, listname: String) {
+
+
+  ValideChange(keylist: string, listname: String) {
      this.lists.update(keylist, {name: listname})
-     this.keyEditedList = ""
+     this.keyEditedList = ''
   }
 }

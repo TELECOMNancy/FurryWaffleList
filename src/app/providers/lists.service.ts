@@ -11,6 +11,10 @@ export class ListsService {
   }
 
   getList(key: string): FirebaseObjectObservable<any> {
-    return this.af.database.object(`/lists/${key}`)
+    //return this.af.database.object(`/lists/${key}`)
+    this.af.database.object(`/lists/${key}`).subscribe(res => {
+      console.log(res)
+    })
+    return null
   }
 }

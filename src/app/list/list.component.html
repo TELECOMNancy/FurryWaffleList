@@ -14,28 +14,34 @@
       <md-card-subtitle>Le gras, c'est la vie!</md-card-subtitle>
     </md-card-header>
     <div class="waffle-list-illustration">
-            <img src="http://i.imgur.com/Ajlyv.jpg">
+      <img src="http://i.imgur.com/Ajlyv.jpg">
     </div>
     <md-card-content>
       <p>
         Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi. 
         Il faut qu'on se repartisse les achats pour la soirée ;).
       </p>
-      <md-list *ngFor="let item of itemElements | async">
+      <md-list >
         
-        <md-list-item> 
+        <md-list-item *ngFor="let item of itemElements | async"> 
+
 
           <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
-          <md-checkbox></md-checkbox>
+          <md-checkbox (click)="updateItem(item)"></md-checkbox>
           {{ item.name }}
           <button md-mini-fab class="deleteButton" (click)="deleteElement(item.$key)" >
 				    <md-icon>delete</md-icon> 
 		  	  </button>
+
+        </md-list-item>
+
+        <md-list-item id="input-item">
+          <md-input-container>
+            <input mdInput placeholder="Buy saint emilion wine!" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
+          </md-input-container>
         </md-list-item>
       </md-list>
-      <md-input-container>
-        <input mdInput placeholder="New element" value="">
-      </md-input-container>
+      
     </md-card-content>
   </md-card>
 </div>
