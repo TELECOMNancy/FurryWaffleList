@@ -6,13 +6,22 @@ md-sidenav-container {
     right: 0;
 }
 
+.sidenav_menu {
+    clear: right;
+}
+
 .sidenav_icon {
+    margin-right: 10px;
+    margin-top: 10px;
+    float: right;
+}
+
+.sidenav_container_icon {
     margin-left: 10px;
     margin-top: 10px;
 }
 
 .main_page {
-    position: absolute;
     margin-left: 10px;
     margin-top: 10px;
 }

@@ -1,0 +1,48 @@
+#waffle-list-container {
+    //background: red;
+    padding: 2% 25%;
+}
+
+.waffle-list {
+    padding: 0;
+
+    md-card-header, md-card-actions, md-card-content {
+        padding: 24px;
+    }
+    md-card-header {
+        padding-bottom: 0;
+    }
+}
+
+md-card-header div img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.waffle-list-illustration {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    
+    img {
+        object-fit: cover;
+        position: relative;
+        height: 200px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    &:after {
+        content: '';
+        background: rgba(0,0,0,0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 200;
+    }
+}
