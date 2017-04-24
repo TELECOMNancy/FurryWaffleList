@@ -7,6 +7,10 @@ import { AngularFireModule } from 'angularfire2';
 
 import {MdListModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
+import {MdButtonModule} from '@angular/material';
+import { MdSidenavModule } from '@angular/material';
+
+import {Router} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
@@ -14,9 +18,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ListComponent } from './list/list.component';
 import { RouterModule } from '@angular/router';
-import { MdButtonModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
+import { ListsService } from './providers/lists.service';
+import { WelcomeComponent } from './welcome/welcome.component';
+import {MdInputModule} from '@angular/material';
 
 
 export const firebaseConfig = {
@@ -31,6 +36,7 @@ export const firebaseConfig = {
     AppComponent,
     ListComponent,
     ListsComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +50,9 @@ export const firebaseConfig = {
     MdSidenavModule,
     MdButtonModule,
     MdIconModule,
+    MdInputModule
   ],
-  providers: [ ],
+  providers: [ListsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
