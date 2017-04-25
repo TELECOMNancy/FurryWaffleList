@@ -17,7 +17,7 @@ import { ListsService } from '../providers/lists.service'
     SharedModule,
     FormsModule,
     HttpModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [ListsService],
 })

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { CommonModule } from '@angular/common'
+import { RouterModule, Routes } from '@angular/router'
+import { NotFoundComponent } from './not-found/not-found.component'
 
-import { ListComponent } from './list/list.component';
-import { ListsComponent } from './lists/lists.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { ListComponent } from './list/list.component'
+import { ListsComponent } from './lists/lists.component'
+import { WelcomeComponent } from './welcome/welcome.component'
+import { SignInComponent } from './sign-in/sign-in.component'
 
 
 const appRoutes: Routes = [
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'lists/:key',
     component: ListComponent
+  },
+  {
+    path: 'signin',
+    component: SignInComponent
   },
   {
     path: 'lists',
