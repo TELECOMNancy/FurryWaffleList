@@ -10,16 +10,6 @@ export class SignInService {
 
   constructor(public af: AngularFire) {this.af.auth.subscribe(user => this.changeState(user)) }
 
-  login(from: string) {
-    this.af.auth.login({
-      provider: this.getProvider(from)
-    })
-  }
-
-  logout() {
-    this.af.auth.logout()
-  }
-
   changeState(user: any = null) {
     if (user) {
       this.isAuth = true
@@ -43,6 +33,17 @@ export class SignInService {
       email: data.email,
       provider: data.providerId
     }
+  }
+
+  getUserId(): string {
+    if (!this.isAuth) {
+      return ''
+    }
+      this.af.auth.subscribe(authData => {
+      console.log(authData)
+      const uid = authData.uid
+      return uid
+      })
   }
 
   getProvider(from: string) {

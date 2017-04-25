@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import {Router} from '@angular/router'
-import {AngularFire, FirebaseListObservable} from 'angularfire2'
+import { Router } from '@angular/router'
+import { AngularFire, FirebaseListObservable } from 'angularfire2'
 import { ListsService } from '../providers/lists.service'
 import { SignInService } from '../providers/sign-in.service'
 
@@ -17,24 +17,21 @@ export class PrivateListsComponent implements OnInit {
   userInfo: any
 
 
-  constructor(private af: AngularFire , private router: Router, private signin: SignInService) { 
-    if (signin.isAuth) {
-      signin.af.auth.subscribe(authData => {
-      console.log(authData)
-      let uid = authData.uid
-      console.log(uid)
-      })
-    }
+  constructor(private af: AngularFire, private router: Router, private signin: SignInService) {
   }
 
   ngOnInit() {
-
-    this.lists = this.af.database.list('/lists', {
-  query: {
-    orderByChild: 'private',
-    equalTo: 'true'
-  }
-})
+    if (this.signin.isAuth) {
+      this.af.auth.subscribe(authData => {
+        this.userInfo = authData.uid
+      })
+      this.lists = this.af.database.list('/lists', {
+        query: {
+          orderByChild: 'owner',
+          equalTo: this.userInfo
+        }
+      })
+    }
   }
 
   onSelect(keylist: String): void {
@@ -50,8 +47,8 @@ export class PrivateListsComponent implements OnInit {
 
 
   ValideChange(keylist: string, listname: String) {
-     this.lists.update(keylist, {name: listname})
-     this.keyEditedList = ''
+    this.lists.update(keylist, { name: listname })
+    this.keyEditedList = ''
   }
 
 }

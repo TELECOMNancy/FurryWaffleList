@@ -5,6 +5,7 @@
   </md-input-container>
   <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
   <div class='options'>
+    {{ errorMessage }}
   <md-checkbox #voteValue>Enable the vote</md-checkbox>
   <md-radio-group [(ngModel)]="private">
     <md-radio-button value='false'>Public</md-radio-button>
