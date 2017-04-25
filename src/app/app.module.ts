@@ -14,7 +14,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { ListComponent } from './list/list.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { ListsService } from './providers/lists.service'
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignInService } from './providers/sign-in.service'
+import { SignInComponent } from './sign-in/sign-in.component'
 import { PrivateListsComponent } from './private-lists/private-lists.component'
 
 
@@ -47,7 +48,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     MdToolbarModule
   ],
-  providers: [ListsService],
+  providers: [ListsService, SignInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

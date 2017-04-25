@@ -11,11 +11,12 @@ export class WelcomeComponent implements OnInit {
 
   lists: FirebaseListObservable<any[]>
   errorMessage: String
-  private: false
+  private: 'false'
 
 
   constructor(private af: AngularFire, private router: Router) {
     this.lists = af.database.list('/lists')
+    this.private = 'false'
   }
 
   ngOnInit() {
