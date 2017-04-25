@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { AngularFire, AuthProviders } from 'angularfire2'
+import { AngularFire, AuthProviders, FirebaseListObservable } from 'angularfire2'
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +10,7 @@ export class SignInComponent implements OnInit {
 
   isAuth = false
   authColor = 'warn'
-  user = {}
+  user: any
 
   constructor(public af: AngularFire) {this.af.auth.subscribe(user => this.changeState(user)) }
 
@@ -33,6 +33,11 @@ export class SignInComponent implements OnInit {
       this.isAuth = true
       this.authColor = 'primary'
       this.user = this.getUserInfo(user)
+      if (this.user.email) {
+        const listUsers: FirebaseListObservable<any[]> = this.af.database.list('/users/')
+        listUsers.push(this.user)
+      }
+
     } else {
       this.isAuth = false
       this.authColor = 'warn'

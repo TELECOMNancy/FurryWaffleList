@@ -9,7 +9,7 @@
       </md-list-item>
       <md-list-item class="waffle-input">
         <md-input-container>
-          <input mdInput placeholder="Add a waffler" [(ngModel)]="userEmailInput">
+          <input mdInput placeholder="waffler@gmail.com" (keydown.enter)="addEmail($event)">
         </md-input-container>
       </md-list-item>
     </md-list>

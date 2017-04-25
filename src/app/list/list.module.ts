@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module'
 import { ListsService } from '../providers/lists.service'
 import { SignInService } from '../providers/sign-in.service'
 import { SettingsComponent } from './settings/settings.component'
+import { ReactiveFormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SettingsComponent } from './settings/settings.component'
     SharedModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   providers: [ ListsService, SignInService ],
