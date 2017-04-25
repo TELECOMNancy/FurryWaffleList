@@ -21,10 +21,10 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  createList(listName: String) {
+  createList(listName: String, voteValue: boolean) {
      if (listName.length > 0) {
       this.errorMessage = ''
-      const id = this.lists.push({name: listName}).key
+      const id = this.lists.push({name: listName, vote: voteValue}).key
       this.router.navigate(['lists/' + id])
     } else {
       this.errorMessage = 'Enter a message please.'
