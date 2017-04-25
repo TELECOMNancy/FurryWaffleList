@@ -37,7 +37,6 @@ export class SignInService {
       return {}
     }
     const data = user.auth.providerData[0]
-    console.log(data.displayName)
     return {
       name: data.displayName,
       avatar: data.photoURL,
