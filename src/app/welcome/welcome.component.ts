@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import {MdInputModule} from '@angular/material'
 import { AngularFire, FirebaseListObservable } from 'angularfire2'
 import { Router } from '@angular/router'
 
@@ -12,6 +11,7 @@ export class WelcomeComponent implements OnInit {
 
   lists: FirebaseListObservable<any[]>
   errorMessage: String
+  private: false
 
 
   constructor(private af: AngularFire, private router: Router) {
@@ -24,7 +24,13 @@ export class WelcomeComponent implements OnInit {
   createList(listName: String, voteValue: boolean) {
      if (listName.length > 0) {
       this.errorMessage = ''
-      const id = this.lists.push({name: listName, vote: voteValue}).key
+      let id = ''
+      if (this.private) {
+        id = this.lists.push({name: listName, vote: voteValue, private: this.private}).key
+        // TODO: find user id
+      } else {
+        id = this.lists.push({name: listName, vote: voteValue, private: this.private}).key
+      }
       this.router.navigate(['lists/' + id])
     } else {
       this.errorMessage = 'Enter a message please.'

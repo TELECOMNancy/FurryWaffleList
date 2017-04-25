@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core'
-
 import {Router} from '@angular/router'
 import {AngularFire, FirebaseListObservable} from 'angularfire2'
 import { ListsService } from '../providers/lists.service'
 
-
 @Component({
-  selector: 'app-lists',
-  templateUrl: './lists.component.html',
-  styleUrls: ['./lists.component.scss'],
+  selector: 'app-private-lists',
+  templateUrl: './private-lists.component.html',
+  styleUrls: ['./private-lists.component.scss'],
   providers: [ListsService]
 })
-export class ListsComponent implements OnInit {
-
+export class PrivateListsComponent implements OnInit {
 
   lists: FirebaseListObservable<any[]>
   keyEditedList = ''
@@ -24,13 +21,13 @@ export class ListsComponent implements OnInit {
     this.lists = this.af.database.list('/lists', {
   query: {
     orderByChild: 'private',
-    equalTo: 'false'
+    equalTo: 'true'
   }
 })
   }
 
   onSelect(keylist: String): void {
-    this.router.navigate(['lists/' + keylist])
+    this.router.navigate(['privatelists/' + keylist])
   }
 
   deleteList(keylist: string): void {
@@ -45,4 +42,5 @@ export class ListsComponent implements OnInit {
      this.lists.update(keylist, {name: listname})
      this.keyEditedList = ''
   }
+
 }

@@ -3,6 +3,12 @@
   <md-input-container>
     <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
   </md-input-container>
-  <md-checkbox #voteValue>Enable the vote</md-checkbox>
   <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
+  <div class='options'>
+  <md-checkbox #voteValue>Enable the vote</md-checkbox>
+  <md-radio-group [(ngModel)]="private">
+    <md-radio-button value='false'>Public</md-radio-button>
+    <md-radio-button value='true'>Private</md-radio-button>
+  </md-radio-group>
+  </div>
 </div>

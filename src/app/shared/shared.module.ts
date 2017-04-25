@@ -4,12 +4,14 @@ import { MdButtonModule } from '@angular/material'
 import { MdSidenavModule } from '@angular/material'
 import { MdIconModule } from '@angular/material'
 import { MdCheckboxModule } from '@angular/material'
-import {MdListModule} from '@angular/material'
-import {MdCardModule} from '@angular/material'
-import {MdInputModule} from '@angular/material'
-import {MdToolbarModule} from '@angular/material'
+import { MdListModule } from '@angular/material'
+import { MdCardModule } from '@angular/material'
+import { MdInputModule } from '@angular/material'
+import { MdToolbarModule } from '@angular/material'
+import { MdRadioModule } from '@angular/material';
 
-const module = [
+const modules = [
+  CommonModule,
   MdToolbarModule,
   MdListModule,
   MdCardModule,
@@ -18,15 +20,12 @@ const module = [
   MdIconModule,
   MdCheckboxModule,
   MdInputModule,
+  MdRadioModule
 ]
 
 @NgModule({
-  imports: [
-    CommonModule, module
-  ],
-  exports: [
-    module
-  ],
+  imports: modules,
+  exports: modules,
   declarations: []
 })
 export class SharedModule { }
