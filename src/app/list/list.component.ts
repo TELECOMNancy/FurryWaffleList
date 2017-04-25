@@ -56,8 +56,7 @@ export class ListComponent implements OnInit {
         }
         this.loading = true
       })
-    }
-    else{
+    }else {
       this.loading = true
     }
   })
