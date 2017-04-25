@@ -53,7 +53,7 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  private getProvider(from: string) {
+  getProvider(from: string) {
     switch (from) {
       case 'twitter': return AuthProviders.Twitter
       case 'facebook': return AuthProviders.Facebook
