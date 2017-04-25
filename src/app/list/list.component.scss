@@ -2,15 +2,11 @@ md-list {
     padding: 0 16px;
 }
 
-.item-container {
-    display: block;
-    line-height: 48px;
-    flex-direction: row;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-    box-sizing: border-box;
-    font-size: 16px;
-    height: 48px;
-    position: relative;
+#more-button {
+    margin-left: auto;
+    md-icon {
+        color: black;
+    }
 }
 
 #waffle-list-container {
@@ -31,6 +27,11 @@ md-list {
         padding-bottom: 0;
     }
 }
+
+md-list-item {
+    border-bottom: 1px solid rgba(150,150,150,0.15);
+}
+
 
 
 #input-item {
@@ -74,13 +75,8 @@ md-card-header div img {
     }
 }
 
-div {
-    border-bottom: 1px solid rgba(150,150,150,0.15);
-}
-
 md-icon {
-    float: right;
-    margin-top: 12px;
+    margin-left: auto;
     color: rgb(210,210,210);
     cursor: pointer;
     &:hover {
