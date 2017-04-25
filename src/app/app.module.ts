@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
-import { AngularFireModule } from 'angularfire2'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MdToolbarModule } from '@angular/material'
+import { AngularFireModule, AuthMethods, AuthProviders  } from 'angularfire2'
+
 import { ListModule } from './list/list.module'
 import { AppComponent } from './app.component'
 import { SharedModule } from './shared/shared.module'
@@ -12,7 +14,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { ListComponent } from './list/list.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { ListsService } from './providers/lists.service'
-import { MdToolbarModule } from '@angular/material'
+import { SignInComponent } from './sign-in/sign-in.component'
 
 
 export const firebaseConfig = {
@@ -27,6 +29,7 @@ export const firebaseConfig = {
     AppComponent,
     ListsComponent,
     WelcomeComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +39,11 @@ export const firebaseConfig = {
     SharedModule,
     BrowserAnimationsModule,
     ListModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig, {
+      method: AuthMethods.Popup
+    }),
     AppRoutingModule,
-    MdToolbarModule,
+    MdToolbarModule
   ],
   providers: [ListsService],
   bootstrap: [AppComponent]

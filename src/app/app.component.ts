@@ -9,7 +9,11 @@ import { Router } from '@angular/router'
 export class AppComponent {
 constructor(private router: Router) {}
 
-onclick_lists() {
+onclickLists() {
   this.router.navigate(['/lists'])
-  }
+}
+
+onclickSign() {
+  this.router.navigate(['/signin'])
+}
 }

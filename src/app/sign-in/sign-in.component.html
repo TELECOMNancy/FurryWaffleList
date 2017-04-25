@@ -1,0 +1,43 @@
+<section [ngSwitch]="isAuth">
+
+  <h3 *ngSwitchCase="false">Choose your Federated Identity Provider</h3>
+
+  <md-card *ngSwitchCase="false">
+
+    <button md-raised-button (click)="login('google')">
+      <img width="30" src="assets/google-logo.png" />Use My Google Account
+    </button>
+
+    <button md-raised-button (click)="login('facebook')">
+      <img width="30" src="assets/facebook-logo.png" />Use My Facebook Account
+    </button>
+
+    <button md-raised-button (click)="login('twitter')">
+      <img width="30" src="assets/twitter-logo.png" />Use My Twitter Account
+    </button>
+
+    <button md-raised-button (click)="login('github')">
+      <img width="30" src="assets/github-logo.png" />Use My Github Account
+    </button>
+
+  </md-card>
+
+  <md-card *ngSwitchCase="true">
+     <md-card-header>
+        <img [src]="user.avatar || 'avatar.png'">
+        <md-card-title>{{ user.name }}</md-card-title>
+        <md-card-subtitle>{{ user.email || '(no email)' }}</md-card-subtitle>
+     </md-card-header>
+     <img  src="assets/md-banner.jpg">
+     <md-card-content>
+        <p>You are logged in using <strong>{{ user.provider }}</strong></p>
+     </md-card-content>
+     <md-card-actions>
+       <button md-raised-button (click)="logout()">
+         Logout
+       </button>
+     </md-card-actions>
+  </md-card>
+
+
+</section>
