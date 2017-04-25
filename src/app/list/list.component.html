@@ -25,14 +25,24 @@
       <md-list >
 
         <md-list-item *ngFor="let item of itemElements | async">
-
-
           <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
-          <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
-          {{ item.name }}
-          <button md-mini-fab class="deleteButton" (click)="deleteElement(item.$key)" >
-				    <md-icon>delete</md-icon>
-		  	  </button>
+          <div *ngIf="(list | async)?.vote == true ; else elseBlock">
+            {{ item.name }}
+            <button md-mini-fab class="deleteButton" (click)="addVote(item.$key, item.voteValue)" >
+  				    <md-icon>thumb_up</md-icon>
+  		  	  </button>
+            <button md-mini-fab class="deleteButton" (click)="deleteElement(item.$key)" >
+  				    <md-icon>delete</md-icon>
+  		  	  </button>
+          </div>
+          <ng-template #elseBlock>
+            <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
+            {{ item.name }}
+            <button md-mini-fab class="deleteButton" (click)="deleteElement(item.$key)" >
+  				    <md-icon>delete</md-icon>
+  		  	  </button>
+          </ng-template>
+
 
         </md-list-item>
 
