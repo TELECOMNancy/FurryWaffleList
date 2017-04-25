@@ -28,14 +28,10 @@ md-list {
     }
 }
 
-md-list-item {
-    border-bottom: 1px solid rgba(150,150,150,0.15);
-}
 
-
-
-#input-item {
+.item-container.waffle-input {
     border: none;
+    padding: 0 16px !important;
     md-input-container {
         margin-top: 20px;
         width: 100%;
@@ -76,13 +72,27 @@ md-card-header div img {
 }
 
 md-icon {
-    margin-left: auto;
+    margin: auto;
+    margin-left: 30px;
     color: rgb(210,210,210);
     cursor: pointer;
     &:hover {
         color: black;
     }
 }
+
+.item-controls md-icon:first-child { 
+    margin-left: 0;
+}
+
+.item-controls {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    float: right;
+}
+
 
 @media screen and (max-width: 640px) {
     #waffle-list-container {
@@ -95,4 +105,3 @@ md-icon {
         padding: 8% 5%;
     }
 }
-
