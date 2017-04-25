@@ -30,11 +30,12 @@ export class ListComponent implements OnInit {
     this.itemElements.remove(key)
   }
 
-  updateItem(item) {
+  updateItem(itemkey: string, check: boolean) {
+    this.itemElements.update(itemkey, {checked : !check})
   }
 
   addItem(event) {
-    this.itemElements.push({name: this.itemInput})
+    this.itemElements.push({name: this.itemInput , checked : false })
     this.itemInput = ''
   }
 

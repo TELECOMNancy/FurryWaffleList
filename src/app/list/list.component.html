@@ -19,19 +19,19 @@
     </div>
     <md-card-content>
       <p>
-        Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi. 
+        Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi.
         Il faut qu'on se repartisse les achats pour la soirée ;).
       </p>
       <md-list >
-        
-        <md-list-item *ngFor="let item of itemElements | async"> 
+
+        <md-list-item *ngFor="let item of itemElements | async">
 
 
           <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
-          <md-checkbox (click)="updateItem(item)"></md-checkbox>
+          <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
           {{ item.name }}
           <button md-mini-fab class="deleteButton" (click)="deleteElement(item.$key)" >
-				    <md-icon>delete</md-icon> 
+				    <md-icon>delete</md-icon>
 		  	  </button>
 
         </md-list-item>
@@ -42,7 +42,7 @@
           </md-input-container>
         </md-list-item>
       </md-list>
-      
+
     </md-card-content>
   </md-card>
 </div>
