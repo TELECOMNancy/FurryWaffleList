@@ -27,8 +27,7 @@
           <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
           <div *ngIf="item"  class="item-container">
             <div *ngIf="(list | async)?.vote == true ; else elseBlock">
-              {{ item.name }}
-              {{ item.voteValue}}
+              <span mdTooltip= "item.voteValue" mdTooltipPosition= "before"> {{ item.name }}</span>
               <md-icon  (click)="deleteElement(item.$key)">clear</md-icon>
               <md-icon  (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
             </div>
