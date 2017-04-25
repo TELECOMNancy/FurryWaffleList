@@ -26,6 +26,10 @@ export class ListComponent implements OnInit {
     this.itemElements = this.service.getItems(key)
 }
 
+addVote(key: string, value: number) {
+  this.itemElements.update(key, {voteValue: value + 1})
+}
+
   deleteElement(key: string) {
     this.itemElements.remove(key)
   }
@@ -35,7 +39,7 @@ export class ListComponent implements OnInit {
   }
 
   addItem(event) {
-    this.itemElements.push({name: this.itemInput , checked : false })
+    this.itemElements.push({name: this.itemInput , checked : false, voteValue : 0 })
     this.itemInput = ''
   }
 

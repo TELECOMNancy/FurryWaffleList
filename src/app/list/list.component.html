@@ -23,15 +23,23 @@
         Il faut qu'on se repartisse les achats pour la soirée ;).
       </p>
       <md-list >
-
-        <ng-container *ngFor="let item of itemElements | async">
-          <div *ngIf="item"  class="item-container"> 
-            <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
+        <md-list-item *ngFor="let item of itemElements | async">
+          <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
+          <div *ngIf="item"  class="item-container">
+            <div *ngIf="(list | async)?.vote == true ; else elseBlock">
+              <span mdTooltip= "item.voteValue" mdTooltipPosition= "before"> {{ item.name }}</span>
+              <md-icon  (click)="deleteElement(item.$key)">clear</md-icon>
+              <md-icon  (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
+            </div>
+            <ng-template #elseBlock>
+              <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
               {{ item.name }}
-            <md-icon  (click)="deleteElement(item.$key)">clear</md-icon> 
+              <md-icon  (click)="deleteElement(item.$key)">clear</md-icon>
+            </ng-template>
           </div>
-        </ng-container>      
-        
+        </md-list-item>
+
+
         <div id="input-item" class="item-container">
           <md-input-container>
             <input mdInput placeholder="Buy saint emilion wine!" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
