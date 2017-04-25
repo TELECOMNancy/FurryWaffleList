@@ -24,23 +24,19 @@
       </p>
       <md-list >
 
-        <md-list-item *ngFor="let item of itemElements | async">
-
-
-          <!--<md-checkbox [(ngModel)]="indeterminate">Indeterminate</md-checkbox>-->
-          <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
-          {{ item.name }}
-          <button md-mini-fab class="deleteButton" (click)="deleteElement(item.$key)" >
-				    <md-icon>delete</md-icon>
-		  	  </button>
-
-        </md-list-item>
-
-        <md-list-item id="input-item">
+        <ng-container *ngFor="let item of itemElements | async">
+          <div *ngIf="item"  class="item-container"> 
+            <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
+              {{ item.name }}
+            <md-icon  (click)="deleteElement(item.$key)">clear</md-icon> 
+          </div>
+        </ng-container>      
+        
+        <div id="input-item" class="item-container">
           <md-input-container>
             <input mdInput placeholder="Buy saint emilion wine!" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
           </md-input-container>
-        </md-list-item>
+        </div>
       </md-list>
 
     </md-card-content>

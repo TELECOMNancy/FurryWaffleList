@@ -75,3 +75,14 @@ html, body {
     stroke: #ffa700;
   }
 }
+
+.item-container {
+    display: block;
+    line-height: 48px;
+    flex-direction: row;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: 48px;
+    position: relative;
+ }
