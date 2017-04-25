@@ -14,7 +14,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { ListComponent } from './list/list.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { ListsService } from './providers/lists.service'
-import { SignInComponent } from './sign-in/sign-in.component'
+import { SignInComponent } from './sign-in/sign-in.component';
+import { PrivateListsComponent } from './private-lists/private-lists.component'
 
 
 export const firebaseConfig = {
@@ -30,6 +31,7 @@ export const firebaseConfig = {
     ListsComponent,
     WelcomeComponent,
     SignInComponent,
+    PrivateListsComponent,
   ],
   imports: [
     BrowserModule,

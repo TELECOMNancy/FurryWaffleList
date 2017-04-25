@@ -7,6 +7,7 @@ import { ListComponent } from './list/list.component'
 import { ListsComponent } from './lists/lists.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { SignInComponent } from './sign-in/sign-in.component'
+import { PrivateListsComponent } from './private-lists/private-lists.component'
 
 
 const appRoutes: Routes = [
@@ -19,12 +20,20 @@ const appRoutes: Routes = [
     component: ListComponent
   },
   {
+    path: 'privatelists/:key',
+    component: ListComponent
+  },
+  {
     path: 'signin',
     component: SignInComponent
   },
   {
     path: 'lists',
     component: ListsComponent
+  },
+  {
+    path: 'privatelists',
+    component: PrivateListsComponent
   },
   {
     path: '**',

@@ -8,6 +8,7 @@ import { MdListModule } from '@angular/material'
 import { MdCardModule } from '@angular/material'
 import { MdInputModule } from '@angular/material'
 import { MdToolbarModule } from '@angular/material'
+import { MdRadioModule } from '@angular/material';
 
 const modules = [
   CommonModule,
@@ -19,6 +20,7 @@ const modules = [
   MdIconModule,
   MdCheckboxModule,
   MdInputModule,
+  MdRadioModule
 ]
 
 @NgModule({

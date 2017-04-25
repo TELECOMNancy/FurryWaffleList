@@ -4,3 +4,7 @@
 h1 {
     text-align: center;
 }
+
+md-radio-group {
+    margin: 10px;
+}
