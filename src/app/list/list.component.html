@@ -39,14 +39,18 @@
           <ng-container *ngIf="item" >
             <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
               {{item.voteValue}} {{ item.name }}
-              <md-icon (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
-              <md-icon (click)="deleteElement(item.$key)">clear</md-icon>
+              <div class="item-controls">
+                <md-icon (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
+                <md-icon (click)="deleteElement(item.$key)">clear</md-icon>
+              </div>
             </div>
 
             <ng-template #elseBlock>
               <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
-              {{ item.name }}
-              <md-icon  (click)="deleteElement(item.$key)">clear</md-icon>
+              {{ item.name }} pror
+              <div class="list-controls">
+                <md-icon (click)="deleteElement(item.$key)">clear</md-icon>
+              </div>
             </ng-template>
           </ng-container>
         </md-list-item>
