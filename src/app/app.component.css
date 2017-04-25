@@ -32,7 +32,8 @@ md-sidenav-container {
 }
 
 .logo {
-	width: 40px;
+	width: 70px;
+	margin-top: 50px;
 	margin-left: 20px;
 	margin-right: 50px;
 }
