@@ -18,7 +18,7 @@ export class ListsComponent implements OnInit {
 
 
   lists: FirebaseListObservable<any[]>
-  keyEditedList = '';
+  keyEditedList = ''
 
   constructor(private af: AngularFire , private router: Router) { }
 

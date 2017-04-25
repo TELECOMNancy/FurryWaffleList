@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core'
+  import { Component, OnInit} from '@angular/core'
 import { MdListModule } from '@angular/material'
 import { ActivatedRoute, Params } from '@angular/router'
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2'
