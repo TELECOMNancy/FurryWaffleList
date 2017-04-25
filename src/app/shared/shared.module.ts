@@ -13,6 +13,7 @@ import { MdMenuModule } from '@angular/material'
 import { MdDialogModule } from '@angular/material'
 import { MdAutocompleteModule } from '@angular/material'
 import { MdDialog, MdDialogRef } from '@angular/material'
+import {MdProgressSpinnerModule} from '@angular/material'
 
 const modules = [
   CommonModule,
@@ -27,7 +28,8 @@ const modules = [
   MdInputModule,
   MdRadioModule,
   MdMenuModule,
-  MdDialogModule
+  MdDialogModule,
+  MdProgressSpinnerModule
 ]
 
 @NgModule({

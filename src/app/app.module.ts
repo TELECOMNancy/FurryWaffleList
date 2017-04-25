@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MdToolbarModule } from '@angular/material'
 import { AngularFireModule, AuthMethods, AuthProviders  } from 'angularfire2'
-
 import { ListModule } from './list/list.module'
 import { AppComponent } from './app.component'
 import { SharedModule } from './shared/shared.module'
@@ -48,7 +47,7 @@ export const firebaseConfig = {
       method: AuthMethods.Popup
     }),
     AppRoutingModule,
-    MdToolbarModule
+    MdToolbarModule,
   ],
   providers: [ListsService, SignInService],
   bootstrap: [AppComponent]

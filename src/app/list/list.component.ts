@@ -6,7 +6,7 @@ import { ListsService } from '../providers/lists.service'
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material'
 import { SettingsComponent } from './settings/settings.component'
 import { SignInService } from '../providers/sign-in.service'
-
+import {MdProgressSpinnerModule} from '@angular/material'
 
 @Component({
   selector: 'app-list',
