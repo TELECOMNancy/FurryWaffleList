@@ -20,30 +20,28 @@ export class ListComponent implements OnInit {
   list: FirebaseObjectObservable<any>
   private: FirebaseObjectObservable<any>
   privateValue: string
-
+  key: string
   owner: FirebaseObjectObservable<any>
   ownerKey: string
-
   uid = ''
   loading: boolean
 
 
   constructor(private af: AngularFire, private route: ActivatedRoute, private service: ListsService, public dialog: MdDialog,
     private signin: SignInService, private router: Router) {
-    const key = this.route.snapshot.params['key']
     this.itemInput = ''
   }
 
   ngOnInit() {
-    const key: string = this.route.snapshot.params['key']
+    this.key = this.route.snapshot.params['key']
     this.loading = false
-    this.list = this.service.getList(key)
-    this.itemElements = this.service.getItems(key)
-    this.private = this.service.getPrivate(key)
+    this.list = this.service.getList(this.key)
+    this.itemElements = this.service.getItems(this.key)
+    this.private = this.service.getPrivate(this.key)
     this.private.subscribe(snapshot => {
       this.privateValue = snapshot.val()
       if (this.privateValue === 'true') {
-      this.owner = this.service.getOwner(key)
+      this.owner = this.service.getOwner(this.key)
       this.owner.subscribe(snapshot => {
         this.ownerKey = snapshot.val()
         this.af.auth.subscribe(authData => {
@@ -84,7 +82,8 @@ export class ListComponent implements OnInit {
       disableClose: false,
       width: '600px',
       data: {
-        users: ['toto', 'titi']
+        key: this.key,
+        list: this.list
       }
     }
     const dialogRef = this.dialog.open(SettingsComponent, config)

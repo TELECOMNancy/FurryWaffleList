@@ -1,12 +1,23 @@
 <div>
-    
+  <!--<pre>
+    {{ data.key }}
+  </pre>
+  <pre>
+    {{ data.list | async | json }}
+  </pre>
+  <h1>{{ (data.list | async)?.name }}</h1>-->
   <h3 md-subheader>Wafflers</h3>  
   <md-dialog-content>
     <md-list>
-      <md-list-item *ngFor="let user of users">
-        <img md-list-avatar src="https://akimg2.ask.fm/assets2/060/372/337/664/normal/av_e1019141bd22089d0fff2701ddac2914.jpg" alt="...">
-        <h3 md-line> {{ user }} </h3>
+      <!--<md-list-item>
+        <img md-list-avatar [src]="users[data.list.owner].avatar" alt="...">
+        <h3 md-line> {{ (data.list | async)?.owner }} </h3>
       </md-list-item>
+      <md-list-item *ngFor="let userID of (data.list | async)?.users">
+        <img md-list-avatar [src]="users[userID].avatar" alt="...">
+        <h3 md-line> {{ userID }} </h3>
+      </md-list-item>-->
+      
       <md-list-item class="waffle-input">
         <md-input-container>
           <input mdInput placeholder="waffler@gmail.com" (keydown.enter)="addEmail($event)">
@@ -14,5 +25,5 @@
       </md-list-item>
     </md-list>
   </md-dialog-content>
- 
+
 </div>

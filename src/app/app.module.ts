@@ -7,6 +7,7 @@ import { MdToolbarModule } from '@angular/material'
 import { AngularFireModule, AuthMethods, AuthProviders  } from 'angularfire2'
 import { ListModule } from './list/list.module'
 import { AppComponent } from './app.component'
+import { UsersService } from './providers/users.service'
 import { SharedModule } from './shared/shared.module'
 import { ListsComponent } from './lists/lists.component'
 import { AppRoutingModule } from './app-routing.module'
@@ -15,7 +16,7 @@ import { WelcomeComponent } from './welcome/welcome.component'
 import { ListsService } from './providers/lists.service'
 import { SignInService } from './providers/sign-in.service'
 import { SignInComponent } from './sign-in/sign-in.component'
-import { PrivateListsComponent } from './private-lists/private-lists.component';
+import { PrivateListsComponent } from './private-lists/private-lists.component'
 import { SafeHtmlPipe } from './safe-html.pipe'
 
 
@@ -49,7 +50,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     MdToolbarModule,
   ],
-  providers: [ListsService, SignInService],
+  providers: [ListsService, SignInService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
