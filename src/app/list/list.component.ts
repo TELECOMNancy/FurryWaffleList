@@ -25,6 +25,7 @@ export class ListComponent implements OnInit {
   ownerKey: string
 
   uid = ''
+  loading: boolean
 
 
   constructor(private af: AngularFire, private route: ActivatedRoute, private service: ListsService, public dialog: MdDialog,
@@ -35,6 +36,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     const key: string = this.route.snapshot.params['key']
+    this.loading = false
     this.list = this.service.getList(key)
     this.itemElements = this.service.getItems(key)
     this.private = this.service.getPrivate(key)
@@ -44,18 +46,22 @@ export class ListComponent implements OnInit {
       this.owner = this.service.getOwner(key)
       this.owner.subscribe(snapshot => {
         this.ownerKey = snapshot.val()
-      })
-      this.af.auth.subscribe(authData => {
-        if (this.signin.isAuth === true) {
-           this.uid = authData.uid
+        this.af.auth.subscribe(authData => {
+          if (this.signin.isAuth === true) {
+             this.uid = authData.uid
+          }
+        })
+        if (this.uid === '' || this.ownerKey !== this.uid) {
+          this.router.navigate(['/'])
         }
+        this.loading = true
       })
-      if (this.uid === '' || this.ownerKey !== this.uid) {
-        this.router.navigate(['/'])
-      }
     }
-    })
-  }
+    else{
+      this.loading = true
+    }
+  })
+}
 
   addVote(key: string, value: number) {
     this.itemElements.update(key, { voteValue: value + 1 })
