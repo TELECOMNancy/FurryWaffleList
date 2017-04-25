@@ -11,11 +11,23 @@ export class ListsService {
   }
 
   getList(key: string): FirebaseObjectObservable<any> {
-    return this.af.database.object(`/lists/${key}`)
+    return this.af.database.object('/lists/' + key)
   }
 
   getItems(key: string): FirebaseListObservable<any[]> {
-    return this.af.database.list(`/lists/${key}/items`)
+    return this.af.database.list('/lists/' + key + '/items')
+  }
+
+  getOwner(key: string): FirebaseObjectObservable<any> {
+    return this.af.database.object('/lists/' + key + '/owner', { preserveSnapshot: true })
+  }
+
+  getUsers(key: string): FirebaseListObservable<any[]> {
+    return this.af.database.list('/lists/' + key + '/users')
+  }
+
+  getPrivate(key: string): FirebaseObjectObservable<any[]> {
+    return this.af.database.object('/lists/' + key + '/private', { preserveSnapshot: true })
   }
 
 }

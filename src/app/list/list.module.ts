@@ -6,6 +6,7 @@ import { AngularFireModule } from 'angularfire2'
 import { ListComponent } from './list.component'
 import { SharedModule } from '../shared/shared.module'
 import { ListsService } from '../providers/lists.service'
+import { SignInService } from '../providers/sign-in.service'
 import { SettingsComponent } from './settings/settings.component'
 
 
@@ -21,7 +22,7 @@ import { SettingsComponent } from './settings/settings.component'
     HttpModule,
     SharedModule
   ],
-  providers: [ ListsService ],
+  providers: [ ListsService, SignInService ],
   entryComponents: [ SettingsComponent ]
 })
 export class ListModule { }
