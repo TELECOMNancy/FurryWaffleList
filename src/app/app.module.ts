@@ -16,7 +16,8 @@ import { WelcomeComponent } from './welcome/welcome.component'
 import { ListsService } from './providers/lists.service'
 import { SignInService } from './providers/sign-in.service'
 import { SignInComponent } from './sign-in/sign-in.component'
-import { PrivateListsComponent } from './private-lists/private-lists.component'
+import { PrivateListsComponent } from './private-lists/private-lists.component';
+import { SafeHtmlPipe } from './safe-html.pipe'
 
 
 export const firebaseConfig = {
@@ -33,6 +34,7 @@ export const firebaseConfig = {
     WelcomeComponent,
     SignInComponent,
     PrivateListsComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
