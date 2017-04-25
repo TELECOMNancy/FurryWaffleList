@@ -9,6 +9,9 @@ import { MdCardModule } from '@angular/material'
 import { MdInputModule } from '@angular/material'
 import { MdToolbarModule } from '@angular/material'
 import { MdRadioModule } from '@angular/material';
+import {MdMenuModule} from '@angular/material'
+import {MdDialogModule} from '@angular/material'
+import {MdDialog, MdDialogRef} from '@angular/material'
 
 const modules = [
   CommonModule,
@@ -20,12 +23,16 @@ const modules = [
   MdIconModule,
   MdCheckboxModule,
   MdInputModule,
-  MdRadioModule
+  MdRadioModule,
+  MdMenuModule,
+  MdDialogModule
 ]
 
 @NgModule({
   imports: modules,
   exports: modules,
-  declarations: []
+  // declarations: [],
+  providers: [MdDialog],
 })
+
 export class SharedModule { }

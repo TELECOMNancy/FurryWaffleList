@@ -6,11 +6,13 @@ import { AngularFireModule } from 'angularfire2'
 import { ListComponent } from './list.component'
 import { SharedModule } from '../shared/shared.module'
 import { ListsService } from '../providers/lists.service'
+import { SettingsComponent } from './settings/settings.component'
 
 
 @NgModule({
   declarations: [
     ListComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,6 +21,7 @@ import { ListsService } from '../providers/lists.service'
     HttpModule,
     SharedModule
   ],
-  providers: [ListsService],
+  providers: [ ListsService ],
+  entryComponents: [ SettingsComponent ]
 })
 export class ListModule { }
