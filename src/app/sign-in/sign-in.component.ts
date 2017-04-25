@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core'
 import { AngularFire, AuthProviders, FirebaseListObservable } from 'angularfire2'
+import { SafeHtmlPipe } from '../safe-html.pipe'
+import { ListsService } from '../providers/lists.service'
+
+
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
 
@@ -12,11 +16,9 @@ export class SignInComponent implements OnInit {
   authColor = 'warn'
   user: any
 
-  constructor(public af: AngularFire) {this.af.auth.subscribe(user => this.changeState(user)) }
+  constructor(public af: AngularFire, public service: ListsService) {this.af.auth.subscribe(user => this.changeState(user)) }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   login(from: string) {
     this.af.auth.login({
@@ -34,8 +36,15 @@ export class SignInComponent implements OnInit {
       this.authColor = 'primary'
       this.user = this.getUserInfo(user)
       if (this.user.email) {
-        const listUsers: FirebaseListObservable<any[]> = this.af.database.list('/users/')
-        listUsers.push(this.user)
+        // console.log(this.user)
+        const listUsers: FirebaseListObservable<any[]> = this.af.database.list('users/')
+        const tmp = {}
+        tmp[this.user.id] = {
+          email: this.user.email,
+          avatar: this.user.avatar,
+          name: this.user.name
+        }
+        listUsers.update(this.user.id, this.user)
       }
 
     } else {
@@ -51,6 +60,7 @@ export class SignInComponent implements OnInit {
     }
     const data = user.auth.providerData[0]
     return {
+      id: user.uid,
       name: data.displayName,
       avatar: data.photoURL,
       email: data.email,

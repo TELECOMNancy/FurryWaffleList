@@ -23,21 +23,19 @@
   </md-card>
 
   <md-card *ngSwitchCase="true">
-     <md-card-header>
-        <img [src]="user.avatar || 'avatar.png'">
-        <md-card-title>{{ user.name }}</md-card-title>
-        <md-card-subtitle>{{ user.email || '(no email)' }}</md-card-subtitle>
-     </md-card-header>
-     <img  src="assets/md-banner.jpg">
-     <md-card-content>
-        <p>You are logged in using <strong>{{ user.provider }}</strong></p>
-     </md-card-content>
-     <md-card-actions>
-       <button md-raised-button (click)="logout()">
+  <md-card-header>
+    <div md-card-avatar class="waffler-picture">
+        <img [src]='user.avatar' alt="">
+      </div>
+    <md-card-title>{{ user.name }}</md-card-title>
+    <md-card-subtitle>{{ user.email || '(no email)' }}</md-card-subtitle>
+  </md-card-header>
+  <md-card-actions>
+    <button md-raised-button (click)="logout()">
          Logout
-       </button>
-     </md-card-actions>
-  </md-card>
+    </button>
+  </md-card-actions>
+</md-card>
 
 
 </section>
