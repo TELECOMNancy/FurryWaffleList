@@ -1,5 +1,8 @@
-<h1>Welcome to Furry Waffle Lists</h1>
-<md-input-container>
-  <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
-</md-input-container>
-<button (click)="createList(listName.value)" md-raised-button>Let's list it!</button>
+<div>
+  <h1>Welcome to Furry Waffle Lists</h1>
+  <md-input-container>
+    <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
+  </md-input-container>
+  <md-checkbox #voteValue>Enable the vote</md-checkbox>
+  <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
+</div>

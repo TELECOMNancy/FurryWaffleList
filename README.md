@@ -1,7 +1,11 @@
-# SuperList
+# Furry Waffle Amazing Lists
+
+
+
 [![Build Status](https://travis-ci.com/TELECOMNancy/pweb-2017-team-fomo.svg?token=3ynpP6sMf9HteH2PVfmd&branch=master)](https://travis-ci.com/TELECOMNancy/pweb-2017-team-fomo)
 
-Note: To skip a build, write in commit message [ci skip]
+
+[furrywafflelist.firebaseapp.com](https://furrywafflelist.firebaseapp.com)
 
 ## RoadMap
 
@@ -29,7 +33,24 @@ Note: To skip a build, write in commit message [ci skip]
 * Export CSV
 
 
+
+## Installation
+
+Be sure you have 'ng' command installed in your machine,
+if not: 
+
+    npm install -g @angular/cli
+
+After that just run the following commands:
+
+    # git clone ...
+    # cd pweb-2017-team-fomo/
+    # npm install
+    # ng serve
+
+
 ## Dev notes
+To skip a build, write in commit message [ci skip]
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
@@ -87,3 +108,17 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+## Authors
+
+ - [Yannick Philippe](https://github.com/YannickPhilippe), Yannick Philippe
+ - [@minious](https://github.com/minious), Eliot Godard
+ - [@quentin-tardivon](https://github.com/quentin-tardivon), Quentin Tardivon
+ - [@Mcdostone](https://github.com/Mcdostone), Yann Prono
+
+<p align="center">
+	<img width="45%" src="https://raw.githubusercontent.com/thepracticaldev/orly-full-res/master/fomo-big.png" alt="Amazing book!"/>
+</p>
+ 

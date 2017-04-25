@@ -1,0 +1,32 @@
+div {
+    text-align: center;
+    margin: 10px;
+}
+
+section {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 20px;
+}
+
+md-card {
+  text-align: center;
+}
+
+md-card-title,
+md-card-subtitle {
+  text-align: left;
+}
+
+button {
+  width: 350px;
+  margin: 10px 0;
+}
+
+button img {
+  vertical-align: middle;
+  margin: 10px;
+}

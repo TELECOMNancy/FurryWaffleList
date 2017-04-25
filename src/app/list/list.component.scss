@@ -1,6 +1,9 @@
 #waffle-list-container {
-    //background: red;
-    padding: 2% 25%;
+    padding: 5% 25%;
+}
+
+.deleteButton {
+    margin: 10px;
 }
 
 .waffle-list {
@@ -11,6 +14,14 @@
     }
     md-card-header {
         padding-bottom: 0;
+    }
+}
+
+
+#input-item {
+    md-input-container {
+        margin-top: 20px;
+        width: 100%;
     }
 }
 
@@ -44,5 +55,17 @@ md-card-header div img {
         right: 0;
         bottom: 0;
         z-index: 200;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #waffle-list-container {
+        padding: 8% 10%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #waffle-list-container {
+        padding: 8% 5%;
     }
 }
