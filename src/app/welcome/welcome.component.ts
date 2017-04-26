@@ -33,8 +33,11 @@ export class WelcomeComponent implements OnInit {
     'https://i.giphy.com/l3V0o7QyRb08irLag.gif',
     'https://i.giphy.com/l9FG64wy5CT5e.gif'
   ]
+
+  imgRegex = /\.(png|jpg|gif|svg|jpeg)$/
   rightGif: String
   lists: FirebaseListObservable<any[]>
+  picture = 'https://blog.fotolia.com/fr/files/2016/08/1467830836GOT_ep_7_The_hound_s_wishful_thinking.gif'
   errorMessage: String
   private: Boolean
   uid: String

@@ -69,14 +69,30 @@ h1 {
 
 .waffle-form {
     width: 30%;
-    padding: 50px;
+    padding: 10px;
     display: flex;
+    position: relative;
     justify-content: center;
     flex-direction: column;
     border: 2px solid rgb(29, 164, 86);
-    
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.7);
+        z-index: 1;
+    }
+
+    md-card-title {
+        z-index: 30;
+    }
     md-card-content {
         width: 100%;
+        z-index: 30;
     }
     
     section {

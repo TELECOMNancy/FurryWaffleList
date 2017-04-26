@@ -2,7 +2,7 @@
   <div class="welcome">
     <div class=background>
       <img [src]="leftGif" alt="">
-      <img [src]="rightGif" alt="">
+      <img [src]="imgRegex.test(picture) ? picture : rightGif" alt="">
     </div>
 
   <md-card class="waffle-form">
@@ -27,7 +27,7 @@
 
       <section>
         <md-input-container>
-          <input #listImg mdInput placeholder="Picture URL for the list">
+          <input #listImg mdInput [(ngModel)]="picture" [pattern]="imgRegex" placeholder="Picture URL for the list">
         </md-input-container>
       </section>
 
