@@ -47,8 +47,17 @@
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
                 {{item.voteValue}} {{ item.name }}
                 <div class="item-controls">
-                  <md-icon class="hover-effect" (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
-                  <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
+                  <ng-container *ngIf= "uid " ><!-- afficher si le mec est co -->
+                    <ng-container *ngIf= "affVote == false ; else elseAvoter"> <!-- affichage si le mec na pas voter sur la list -->
+                      <md-icon class="hover-effect" (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
+                    </ng-container>
+                    <ng-template #elseAvoter>
+                      <ng-container *ngIf= "checkVoted(item) == true">
+                        <md-icon class="hover-effect" (click)="removeVote(item.$key, item.voteValue)">thumb_down</md-icon>
+                      </ng-container>
+                    </ng-template>
+                  </ng-container>
+                  <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
 
