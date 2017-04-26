@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { RouterModule, Routes } from '@angular/router'
 import { NotFoundComponent } from './not-found/not-found.component'
-
 import { ListComponent } from './list/list.component'
 import { ListsComponent } from './lists/lists.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 import { SignInComponent } from './sign-in/sign-in.component'
 import { PrivateListsComponent } from './private-lists/private-lists.component'
+import { SharedListsComponent } from './shared-lists/shared-lists.component'
 
 
 const appRoutes: Routes = [
@@ -24,6 +24,10 @@ const appRoutes: Routes = [
     component: ListComponent
   },
   {
+    path: 'sharedlists/:key',
+    component: ListComponent
+  },
+  {
     path: 'signin',
     component: SignInComponent
   },
@@ -34,6 +38,10 @@ const appRoutes: Routes = [
   {
     path: 'privatelists',
     component: PrivateListsComponent
+  },
+  {
+    path: 'sharedlists',
+    component: SharedListsComponent
   },
   {
     path: '**',
