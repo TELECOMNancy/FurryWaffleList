@@ -10,6 +10,14 @@ export class UsersService {
     return this.af.database.list('/users')
   }
 
+  getUsersObject(): FirebaseObjectObservable<any[]>  {
+    return this.af.database.object('/users')
+  }
+
+  getUser(key: String): FirebaseObjectObservable<any[]>  {
+    return this.af.database.object('/users/' + key)
+  }
+
   addCustomKey (keyList, key, value) {
     const toSend = this.af.database.object('/lists/' + keyList  + '/shared/' + key)
     toSend.set(value)

@@ -18,6 +18,10 @@ export class ListsService {
     return this.af.database.list('/lists/' + key + '/items')
   }
 
+  getUsersList(key: string): FirebaseListObservable<any[]> {
+    return this.af.database.list('/lists/' + key + '/shared')
+  }
+
   getOwner(key: string): FirebaseObjectObservable<any> {
     return this.af.database.object('/lists/' + key + '/owner', { preserveSnapshot: true })
   }
