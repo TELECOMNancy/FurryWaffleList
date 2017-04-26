@@ -10,4 +10,9 @@ export class UsersService {
     return this.af.database.list('/users')
   }
 
+  addCustomKey (keyList, key, value) {
+    const toSend = this.af.database.object('/lists/' + keyList  + '/shared/' + key)
+    toSend.set(value)
+}
+
 }

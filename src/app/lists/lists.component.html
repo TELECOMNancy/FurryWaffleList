@@ -6,7 +6,7 @@
 		<md-input-container>
 		<input #listName mdInput [(ngModel)]="list.name" placeholder="List Name">
 		</md-input-container>
-			<button md-mini-fab (click)="ValideChange(list.$key, listName.value)" >
+			<button md-mini-fab (click)="validChange(list.$key, listName.value)" >
 	          		<md-icon>done</md-icon> 
 	        </button>
 			<button md-mini-fab (click)="deleteList(list.$key)" >
@@ -17,7 +17,7 @@
     		<button md-button (click)="onSelect(list.$key)" >
 				{{list.name}}
 			</button>
-			<button md-mini-fab (click)="EditName(list.$key)" >
+			<button md-mini-fab (click)="editName(list.$key)" >
 	          		<md-icon>create</md-icon> 
 	        </button>
 			<button md-mini-fab (click)="deleteList(list.$key)" >

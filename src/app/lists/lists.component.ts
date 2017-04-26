@@ -36,12 +36,13 @@ export class ListsComponent implements OnInit {
   deleteList(keylist: string): void {
     this.lists.remove(keylist)
   }
-  EditName(keylist: string): void {
+
+  editName(keylist: string): void {
     this.keyEditedList = keylist
   }
 
 
-  ValideChange(keylist: string, listname: String) {
+  validChange(keylist: string, listname: String) {
      this.lists.update(keylist, {name: listname})
      this.keyEditedList = ''
   }
