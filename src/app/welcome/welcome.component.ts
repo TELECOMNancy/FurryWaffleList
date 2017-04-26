@@ -37,7 +37,7 @@ export class WelcomeComponent implements OnInit {
   imgRegex = /\.(png|jpg|gif|svg|jpeg)$/
   rightGif: String
   lists: FirebaseListObservable<any[]>
-  picture = 'https://blog.fotolia.com/fr/files/2016/08/1467830836GOT_ep_7_The_hound_s_wishful_thinking.gif'
+  picture = ''
   errorMessage: String
   private: Boolean
   uid: String
