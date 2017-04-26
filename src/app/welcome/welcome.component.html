@@ -1,15 +1,49 @@
-<div>
-  <h1>Welcome to Furry Waffle Lists</h1>
-  <md-input-container>
-    <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
-  </md-input-container>
-  <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
-  <div class='options'>
-    {{ errorMessage }}
-  <md-checkbox #voteValue>Enable the vote</md-checkbox>
-  <md-radio-group [(ngModel)]="private">
-    <md-radio-button value='false'>Public</md-radio-button>
-    <md-radio-button value='true'>Private</md-radio-button>
-  </md-radio-group>
+<div style="width: 100%" (mousemove)="toggle($event)">
+  <div class="welcome">
+    <div class=background>
+      <img [src]="leftGif" alt="">
+      <img [src]="rightGif" alt="">
+    </div>
+
+  <md-card class="waffle-form">
+    <md-card-content>
+        
+      <md-input-container>
+        <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
+      </md-input-container>
+      
+      <div class='options'>
+        {{ errorMessage }}
+        
+        <section>
+          <md-checkbox #voteValue>Enable the vote</md-checkbox>
+        </section>
+        
+        <section>
+          <md-checkbox [(ngModel)]="private">Make the list private</md-checkbox>
+          <!--<md-radio-group [(ngModel)]="private">
+            <md-radio-button value='false'>Public</md-radio-button>
+            <md-radio-button value='true'>Private</md-radio-button>
+          </md-radio-group>-->
+        </section>
+        
+        <section>
+          <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
+        </section>
+
+      </div>
+    </md-card-content>
+  </md-card>
+  </div>
+
+
+  <div class="about">
+    <h1>Furry Waffle Amazing Lists</h1>
+    <!--<span [@charoyState]="charoy" (mouseover)="toggle()" src="assets/logo_simple_right.png" id="charoy"></span>-->
+    <span [@charoyState]="charoy" id="charoy"></span>
+    <p>Need Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ratione nesciunt omnis dolorem distinctio, 
+      quis perferendis praesentium consequuntur, repellendus, iusto nam, facere maiores alias suscipit dolore natus hic quia. Quo!<p>
+    <h2>How does it works ?</h2>
+
   </div>
 </div>

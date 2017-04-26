@@ -1,14 +1,6 @@
-md-list {
+/*md-list {
     padding: 0 16px;
-}
-
-#more-button {
-    margin-left: auto;
-    md-icon {
-        color: black;
-        margin: 0;
-    }
-}
+}*/
 
 #waffle-list-container {
     padding: 5% 25%;
@@ -74,10 +66,12 @@ md-card-header div img {
 
 md-icon {
     margin: auto;
-    margin-left: 30px;
-    color: rgb(210,210,210);
-    cursor: pointer;
-    &:hover {
+}
+
+#more-button {
+    margin-left: auto;
+    md-icon {
+        margin-left: 0;
         color: black;
     }
 }

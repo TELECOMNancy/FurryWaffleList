@@ -1,22 +1,16 @@
 <div>
-  <!--<pre>
-    {{ data.key }}
-  </pre>
-  <pre>
-    {{ data.list | async | json }}
-  </pre>
-  <h1>{{ (data.list | async)?.name }}</h1>-->
+  
   <h3 md-subheader>Wafflers</h3>  
+
   <md-dialog-content>
-    <md-list>
-      <!--<md-list-item>
-        <img md-list-avatar [src]="users[data.list.owner].avatar" alt="...">
-        <h3 md-line> {{ (data.list | async)?.owner }} </h3>
+    <md-list *ngIf="users | async as res ">
+      <md-list-item *ngFor="let userID of (data.list | async)?.shared | keys">
+        <img md-list-avatar [src]="res[userID].avatar" alt="...">
+        <h3 md-line> {{ res[userID].name }} </h3>
+        <h3 md-line> {{ res[userID].email }} </h3>
+        <md-icon class="hover-effect" (click)="deleteUser(userID)">clear</md-icon>
+
       </md-list-item>
-      <md-list-item *ngFor="let userID of (data.list | async)?.users">
-        <img md-list-avatar [src]="users[userID].avatar" alt="...">
-        <h3 md-line> {{ userID }} </h3>
-      </md-list-item>-->
       
       <md-list-item class="waffle-input">
         <md-input-container>

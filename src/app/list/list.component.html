@@ -15,11 +15,15 @@
         </button>
         <md-menu #menu="mdMenu">
           <button md-menu-item (click)="showSettings()">
-            <md-icon>settings</md-icon>
-            <span>Settings</span>
+            <md-icon>shared</md-icon>
+            <span>Share</span>
+          </button>
+          <button md-menu-item (click)="export2CSV()">
+            <md-icon>file_download</md-icon>
+            <span>Download</span>
           </button>
           <button md-menu-item>
-            <md-icon>delete forever</md-icon>
+            <md-icon>delete</md-icon>
             <span>Delete</span>
           </button>
         </md-menu>
@@ -41,8 +45,8 @@
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
                 {{item.voteValue}} {{ item.name }}
                 <div class="item-controls">
-                  <md-icon (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
-                  <md-icon (click)="deleteElement(item.$key)">clear</md-icon>
+                  <md-icon class="hover-effect" (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
+                  <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
                 </div>
               </div>
 
@@ -51,7 +55,7 @@
                   <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
                   {{ item.name }}
                   <div class="item-controls">
-                    <md-icon (click)="deleteElement(item.$key)">clear</md-icon>
+                    <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
                   </div>
                 </div>
 

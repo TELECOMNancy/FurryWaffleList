@@ -9,19 +9,19 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$candy-app-primary: mat-palette($mat-blue);
-$candy-app-accent:  mat-palette($mat-blue, A200, A100, A400);
+$primary: mat-palette($mat-green);
+$accent:  mat-palette($mat-green, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$candy-app-warn:    mat-palette($mat-red);
+$warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+$theme: mat-light-theme($primary, $accent, $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($candy-app-theme);
+@include angular-material-theme($theme);
 
 
 /* You can add global styles to this file, and also import other style files */
@@ -29,6 +29,16 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Roboto;
+}
+
+.spinner-container {
+     position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
 }
 
 .waffler-picture img {
@@ -58,6 +68,16 @@ html, body {
   content: '';
   display: block;
   padding-top: 100%;
+}
+
+.hover-effect {
+  color: rgb(210,210,210);
+  fill: rgb(210,210,210);
+  cursor: pointer;
+  &:hover {
+     color: black;
+     fill: black;
+  }
 }
 
 .circular {
@@ -199,4 +219,7 @@ html, body {
   90% {
     stroke: #ffa700;
   }
+
 }
+
+

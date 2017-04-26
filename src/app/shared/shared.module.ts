@@ -13,7 +13,10 @@ import { MdMenuModule } from '@angular/material'
 import { MdDialogModule } from '@angular/material'
 import { MdAutocompleteModule } from '@angular/material'
 import { MdDialog, MdDialogRef } from '@angular/material'
-import {MdProgressSpinnerModule} from '@angular/material'
+import { MdProgressSpinnerModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { KeysPipe } from './keys.pipe'
+
 
 const modules = [
   CommonModule,
@@ -25,18 +28,21 @@ const modules = [
   MdButtonModule,
   MdIconModule,
   MdCheckboxModule,
+  BrowserAnimationsModule,
   MdInputModule,
   MdRadioModule,
   MdMenuModule,
   MdDialogModule,
-  MdProgressSpinnerModule
+  MdProgressSpinnerModule,
+
 ]
 
 @NgModule({
   imports: modules,
-  exports: modules,
+  exports: [  KeysPipe, modules ],
   // declarations: [],
   providers: [MdDialog],
+  declarations: [KeysPipe],
 })
 
 export class SharedModule { }
