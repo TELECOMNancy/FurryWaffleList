@@ -8,7 +8,7 @@ import {MdDialog, MdDialogRef } from '@angular/material'
 })
 export class ConfirmDeletionDialogComponent implements OnInit {
 
-  constructor(dialogRef: MdDialogRef<ConfirmDeletionDialogComponent>) {}
+  constructor(public dialogRef: MdDialogRef<ConfirmDeletionDialogComponent>) {}
 
   ngOnInit() {
   }
