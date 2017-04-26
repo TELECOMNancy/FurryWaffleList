@@ -65,7 +65,7 @@ export class WelcomeComponent implements OnInit {
           this.uid = authData.uid
         })
         id = this.lists.push({name: listName, vote: voteValue, private: this.private, owner: this.uid}).key
-        this.router.navigate(['/privatelists/' + id])
+        this.router.navigate(['/private-lists/' + id])
       } else if (this.private === false) {
         id = this.lists.push({name: listName, vote: voteValue, private: this.private}).key
         this.router.navigate(['lists/' + id])

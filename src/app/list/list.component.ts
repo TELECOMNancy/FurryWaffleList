@@ -5,6 +5,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 import { ListsService } from '../providers/lists.service'
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material'
 import { SettingsComponent } from './settings/settings.component'
+import { ConfirmDeletionDialogComponent } from './confirm-deletion-dialog/confirm-deletion-dialog.component'
 import { SignInService } from '../providers/sign-in.service'
 import {MdProgressSpinnerModule} from '@angular/material'
 import { CsvExport } from '../csv-export'
@@ -44,7 +45,7 @@ export class ListComponent implements OnInit {
       this.privateValue = snapshot.val()
       if (this.privateValue === 'true') {
       this.owner = this.service.getOwner(this.key)
-      this.owner.subscribe(snapshot => {
+      this.owner.subscribe( snapshot => {
         this.ownerKey = snapshot.val()
         this.af.auth.subscribe(authData => {
           if (this.signin.isAuth === true) {
@@ -82,19 +83,29 @@ export class ListComponent implements OnInit {
   showSettings() {
     const config: MdDialogConfig = {
       disableClose: false,
-      width: '600px',
       data: {
         key: this.key,
         list: this.list
       }
     }
     const dialogRef = this.dialog.open(SettingsComponent, config)
-    /*dialogRef.afterClosed().subscribe(result => {
-    })*/
+  }
+
+  showDeletionDialog() {
+    const config: MdDialogConfig = {
+      disableClose: false,
+    }
+    const dialogRef = this.dialog.open(ConfirmDeletionDialogComponent, config)
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.getLists().remove(this.key)
+        this.router.navigate(['/'])
+    }
+    })
   }
 
 export2CSV() {
-    let data = []
+    const data = []
     this.list.subscribe(list => {this.listName = list.name
       this.service.getItems(list.$key).forEach(items => {
         items.forEach(item => {

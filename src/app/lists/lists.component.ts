@@ -20,21 +20,16 @@ export class ListsComponent implements OnInit {
   constructor(private af: AngularFire , private router: Router) { }
 
   ngOnInit() {
-
     this.lists = this.af.database.list('/lists', {
-  query: {
-    orderByChild: 'private',
-    equalTo: 'false'
-  }
-})
+      query: {
+        orderByChild: 'private',
+        equalTo: 'false'
+      }
+    })
   }
 
   onSelect(keylist: String): void {
     this.router.navigate(['lists/' + keylist])
-  }
-
-  deleteList(keylist: string): void {
-    this.lists.remove(keylist)
   }
 
   editName(keylist: string): void {

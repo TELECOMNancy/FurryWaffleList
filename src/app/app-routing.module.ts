@@ -20,11 +20,11 @@ const appRoutes: Routes = [
     component: ListComponent
   },
   {
-    path: 'privatelists/:key',
+    path: 'private-lists/:key',
     component: ListComponent
   },
   {
-    path: 'sharedlists/:key',
+    path: 'shared-lists/:key',
     component: ListComponent
   },
   {
@@ -36,11 +36,11 @@ const appRoutes: Routes = [
     component: ListsComponent
   },
   {
-    path: 'privatelists',
+    path: 'private-lists',
     component: PrivateListsComponent
   },
   {
-    path: 'sharedlists',
+    path: 'shared-lists',
     component: SharedListsComponent
   },
   {
