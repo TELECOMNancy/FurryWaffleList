@@ -36,7 +36,7 @@ export const firebaseConfig = {
     SignInComponent,
     PrivateListsComponent,
     SafeHtmlPipe,
-    SharedListsComponent,
+    SharedListsComponent
   ],
   imports: [
     BrowserModule,

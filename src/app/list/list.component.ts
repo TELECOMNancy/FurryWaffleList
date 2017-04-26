@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { MdListModule } from '@angular/material'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2'
@@ -15,7 +15,7 @@ import { CsvExport } from '../csv-export'
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit{
   itemElements: FirebaseListObservable<any[]>
   errorMessage: String
   itemInput: string
@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
   uid = ''
   loading: boolean
   listName: string
+  lastIndex = 0
 
 
   constructor(private af: AngularFire, private route: ActivatedRoute, private service: ListsService, public dialog: MdDialog,
@@ -75,9 +76,60 @@ export class ListComponent implements OnInit {
     this.itemElements.update(itemkey, { checked: !check })
   }
 
+  updateItemIndex(itemkey: string, index: number) {
+    this.itemElements.update(itemkey, {index: index})
+  }
+
+  increaseIndex(itemkey: string, index: number) {
+    this.itemElements.subscribe( items => {
+      //this.service.getItemsObject(this.key).subscribe(items => {
+
+        const source = items.find(x => x.$key === itemkey)
+        const dest = items.find(x => x.index === source.index - 1)
+        console.log(source)
+        console.log(dest)
+        //this.itemElements.update(source.$key, {index: source.index - 1 })
+        //this.itemElements.update(dest.$key, {index: source.index})
+        //items
+    })
+
+    this.itemElements.subscribe( items => {
+      //this.service.getItemsObject(this.key).subscribe(items => {
+
+        const source = items.find(x => x.$key === itemkey)
+        const dest = items.find(x => x.index === index - 1)
+        console.log(source)
+        console.log(dest)
+        //this.itemElements.update(dest.$key, {index: index})
+        //items
+    })
+
+      /*for (let i = 0; i < items.length; i++) {
+        if (items[i].index === index - 1) {
+          const newIndex = index - 1
+          this.itemElements.update(items[i].$key, {index: index })
+          console.log('Item1: ' + itemkey )
+          this.itemElements.update(itemkey, {index: newIndex}) // <-- plantage au 2ème
+          break
+        }
+      }*/
+    //})
+  }
+
+  decreaseIndex(itemkey: string, index: number) {
+    this.itemElements.forEach( items => {
+      items.forEach(newItem => {
+        if (newItem.index === index + 1) {
+          this.increaseIndex(newItem.$key, index + 1)
+        }
+      })
+    })
+  }
+
   addItem(event) {
-    this.itemElements.push({ name: this.itemInput, checked: false, voteValue: 0 })
+    this.itemElements.push({ name: this.itemInput, checked: false, voteValue: 0, index: this.lastIndex })
     this.itemInput = ''
+    this.lastIndex += 1
   }
 
   showSettings() {

@@ -15,7 +15,24 @@ export class ListsService {
   }
 
   getItems(key: string): FirebaseListObservable<any[]> {
-    return this.af.database.list('/lists/' + key + '/items')
+    return this.af.database.list('/lists/' + key + '/items', {
+  query: {
+    orderByChild: 'index'
+  }
+})
+  }
+
+  getItemsObject(key: string): FirebaseObjectObservable<any[]> {
+    return this.af.database.object('/lists/' + key + '/items')
+  }
+
+  getItemByIndex(key: string, index: number): FirebaseListObservable<any[]> {
+    return this.af.database.list('/lists/' + key + '/items', {
+      query: {
+        orderByChild: 'index',
+        equalTo: index
+      }
+    })
   }
 
   getUsersList(key: string): FirebaseListObservable<any[]> {
