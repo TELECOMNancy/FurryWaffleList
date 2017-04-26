@@ -30,7 +30,7 @@
       </md-card-header>
 
       <div class="waffle-list-illustration">
-        <img src="http://i.imgur.com/Ajlyv.jpg">
+        <img [src]="(list | async)?.picture ? (list | async)?.picture : 'http://i.imgur.com/Ajlyv.jpg'">
       </div>
 
       <md-card-content>

@@ -7,30 +7,36 @@
 
   <md-card class="waffle-form">
     <md-card-content>
-        
+
       <section>
         <md-input-container>
           <input #listName mdInput placeholder="List title">
         </md-input-container>
       </section>
-        
+
       <section style="height: auto">
         <md-input-container>
           <textarea mdAutosizeMinRows="4" #listDesc mdInput maxlength="140" mdTextareaAutosize placeholder="Description"></textarea>
           <md-hint align="end">{{listDesc.value.length}} / 140</md-hint>
         </md-input-container>
       </section>
-      
+
+      <section>
+        <md-input-container>
+          <input #listImg mdInput placeholder="Picture URL for the list">
+        </md-input-container>
+      </section>
+
       <div class='options'>
         {{ errorMessage }}
-        
+
         <section>
           <md-checkbox #voteValue>Enable the vote</md-checkbox>
           <md-checkbox [(ngModel)]="private">Make the list private</md-checkbox>
         </section>
-        
+
         <section>
-          <button (click)="createList(listName.value, listDesc.value, voteValue.checked)" md-raised-button>Let's list it!</button>
+          <button (click)="createList(listName.value, listDesc.value, listImg.value, voteValue.checked)" md-raised-button>Let's list it!</button>
         </section>
 
       </div>
@@ -43,7 +49,7 @@
     <h1>Furry Waffle Amazing Lists</h1>
     <!--<span [@charoyState]="charoy" (mouseover)="toggle()" src="assets/logo_simple_right.png" id="charoy"></span>-->
     <span [@charoyState]="charoy" id="charoy"></span>
-    <p>Need Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ratione nesciunt omnis dolorem distinctio, 
+    <p>Need Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ratione nesciunt omnis dolorem distinctio,
       quis perferendis praesentium consequuntur, repellendus, iusto nam, facere maiores alias suscipit dolore natus hic quia. Quo!<p>
     <h2>How does it works ?</h2>
 
