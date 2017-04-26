@@ -26,8 +26,6 @@ export class SettingsComponent {
   addEmail(event) {
     const u = this.users.find( u => u.email === event.target.value)
     if (u) {
-      console.log(u.id)
-      // this.serviceList.getUsers(this.data.key).push({name: u.email})
       this.service.addCustomKey(this.data.key, u.id, u.email)
     }
   }
