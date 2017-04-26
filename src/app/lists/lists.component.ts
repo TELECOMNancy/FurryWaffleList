@@ -13,11 +13,10 @@ import { ListsService } from '../providers/lists.service'
 })
 export class ListsComponent implements OnInit {
 
-
   lists: FirebaseListObservable<any[]>
   keyEditedList = ''
 
-  constructor(private af: AngularFire , private router: Router) { }
+  constructor(private af: AngularFire, private router: Router) { }
 
   ngOnInit() {
     this.lists = this.af.database.list('/lists', {
@@ -28,17 +27,7 @@ export class ListsComponent implements OnInit {
     })
   }
 
-  onSelect(keylist: String): void {
-    this.router.navigate(['lists/' + keylist])
-  }
-
-  editName(keylist: string): void {
-    this.keyEditedList = keylist
-  }
-
-
-  validChange(keylist: string, listname: String) {
-     this.lists.update(keylist, {name: listname})
-     this.keyEditedList = ''
-  }
+    onSelect(list: any): void {
+      this.router.navigate(['lists/' + list.$key])
+    }
 }

@@ -34,4 +34,5 @@ export class ListsService {
     return this.af.database.object('/lists/' + key + '/private', { preserveSnapshot: true })
   }
 
+
 }

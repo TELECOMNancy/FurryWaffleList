@@ -10,14 +10,14 @@
         
       <section>
         <md-input-container>
-          <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
+          <input #listName mdInput placeholder="List title">
         </md-input-container>
       </section>
         
-      <section>
+      <section style="height: auto">
         <md-input-container>
-          <textarea #listDesc mdInput maxlength="250" placeholder="Description"></textarea>
-          <md-hint align="end">{{listDesc.value.length}} / 250</md-hint>
+          <textarea mdAutosizeMinRows="4" #listDesc mdInput maxlength="140" mdTextareaAutosize placeholder="Description"></textarea>
+          <md-hint align="end">{{listDesc.value.length}} / 140</md-hint>
         </md-input-container>
       </section>
       
@@ -26,14 +26,7 @@
         
         <section>
           <md-checkbox #voteValue>Enable the vote</md-checkbox>
-        </section>
-        
-        <section>
           <md-checkbox [(ngModel)]="private">Make the list private</md-checkbox>
-          <!--<md-radio-group [(ngModel)]="private">
-            <md-radio-button value='false'>Public</md-radio-button>
-            <md-radio-button value='true'>Private</md-radio-button>
-          </md-radio-group>-->
         </section>
         
         <section>

@@ -68,24 +68,42 @@ h1 {
 }
 
 .waffle-form {
+    top: 50px;
+    width: 30%;
     padding: 50px;
     display: flex;
     justify-content: center;
     border: 2px solid rgb(29, 164, 86);
+    
+    md-card-content {
+        width: 100%;
+    }
+    
     section {
         display: flex;
         align-content: center;
         align-items: center;
         text-align: center;
+        width: 100%;
         height: 60px;
         button {
             margin: auto;
+        }
+        & * {
+            width: 100%;
         }
     }
     section:last-child {
         margin-top: 30px;
     }
+
+    textarea {
+        width: 100%;
+        //height: 300px;
+    }
 }
+
+
 
 .about {
     display: flex;
