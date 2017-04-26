@@ -2,12 +2,47 @@ html {
     font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+md-sidenav {
+    min-width: 230px;
+    display: flex;
+    flex-direction: column;
+
+    .logos-container {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        .logo {
+           width: 48px;
+           height: auto;
+        }
+    }
+}
+
+div.mat-list-item-content.mat-ripple {
+    padding: 0 0 !important;
+}
+
+
+md-list div {
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    a, a *{
+        width: 100%;
+        height: 48px;
+    }
+}
+
 md-sidenav-container {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+
 }
 
 .sidenav_menu {
@@ -17,7 +52,7 @@ md-sidenav-container {
 .sidenav_icon {
     margin-right: 10px;
     margin-top: 10px;
-    float: right;
+    margin-left: auto;
 }
 
 .root-container {
@@ -38,10 +73,14 @@ md-sidenav-container {
 }
 
 md-toolbar {
-    background:#bdc3c7;
+    background:#27ae60;
+    //background:#2ecc71;
+    //background:rgb(80,80,80);
+    z-index: 999;
+    color: white;
 }
 
-md-sidenav-container md-list-item a {
+md-sidenav-container md-list-item a, div a {
     color: black !important;
 }
 

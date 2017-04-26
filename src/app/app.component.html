@@ -1,24 +1,30 @@
 <md-sidenav-container>
 	<md-sidenav #sidenav mode="over">
-		<button md-mini-fab (click)="sidenav.toggle()" class="sidenav_icon"><md-icon>menu</md-icon></button>
+		<button md-icon-button (click)="sidenav.toggle()" class="sidenav_icon">
+			<md-icon>clear</md-icon>
+		</button>
+		
 		<div class="sidenav_menu">
 			<md-list>
-				<md-list-item><a routerLink="/"><button md-button>Home</button></a></md-list-item>
-				<md-list-item><a routerLink="/signin"><button md-button>Sign In</button></a></md-list-item>
+				<div (click)="sidenav.toggle()"><a routerLink="/"><button md-button>Home</button></a></div>
+				<div (click)="sidenav.toggle()"><a routerLink="/signin"><button md-button>Sign In</button></a></div>
 				<md-divider></md-divider>
 
-				<md-list-item><a routerLink="/lists"><button md-button>Public lists</button></a></md-list-item>
-				<md-list-item><a routerLink='/privatelists'><button md-button>My lists</button></a></md-list-item>
+				<div (click)="sidenav.toggle()"><a routerLink="/lists"><button md-button>Public lists</button></a></div>
+				<div (click)="sidenav.toggle()"><a routerLink='/privatelists'><button md-button>My lists</button></a></div>
 				<md-divider></md-divider>
 
-				<md-list-item><button md-button>About</button></md-list-item>
+				<!--<div><button md-button>About</button></div>-->
 			</md-list>
+		</div>
+		<div class="logos-container">
+			<a href="https://github.com/TELECOMNancy/pweb-2017-team-fomo" target="_blank"><img class="hover-effect logo" src="assets/github-logo.svg" alt=""></a> 
 		</div>
 	</md-sidenav>
 
 	<div class="root-container">
 		<md-toolbar>
-			<button md-mini-fab (click)="sidenav.toggle()">
+			<button md-icon-button (click)="sidenav.toggle()">
 				<md-icon>menu</md-icon>
 			</button>
 
