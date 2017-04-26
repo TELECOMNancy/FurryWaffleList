@@ -21,9 +21,17 @@
       
       <md-list-item class="waffle-input">
         <md-input-container>
-          <input mdInput placeholder="waffler@gmail.com" (keydown.enter)="addEmail($event)">
+          <input mdInput [formControl]="emailControl" placeholder="waffler@gmail.com" (keydown.enter)="addEmail($event)" [mdAutocomplete]="auto">
         </md-input-container>
+
+        <md-autocomplete #auto="mdAutocomplete">
+          <md-option *ngFor="let user of filteredUsers | async" [value]="user.email">
+            {{ user.email }}
+          </md-option>
+        </md-autocomplete>
+
       </md-list-item>
+
     </md-list>
   </md-dialog-content>
 

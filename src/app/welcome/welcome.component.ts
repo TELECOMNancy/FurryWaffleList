@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core'
 import { AngularFire, FirebaseListObservable } from 'angularfire2'
 import { Router } from '@angular/router'
-import { SignInService } from '../providers/sign-in.service'
+import { Http, Response } from '@angular/http'
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/debounceTime'
+import 'rxjs/add/operator/distinctUntilChanged'
+import 'rxjs/add/operator/switchMap'
 import { trigger, state, style, animate, transition } from '@angular/animations'
+import { Subject } from 'rxjs/Subject'
+import { SignInService } from '../providers/sign-in.service'
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -23,19 +30,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class WelcomeComponent implements OnInit {
-  leftGifs: String[] = [
+  leftGifs = [
     'https://i.giphy.com/gpufDFw0sPBYY.gif',
     'https://i.giphy.com/125RIkH7IluIpy.gif',
     'https://i.giphy.com/3o6wrzcyVdjrEC5UaY.gif'
   ]
-  leftGif: String
-  rightGifs: String[] = [
+  rightGifs = [
     'https://i.giphy.com/l3V0o7QyRb08irLag.gif',
     'https://i.giphy.com/l9FG64wy5CT5e.gif'
   ]
 
-  imgRegex = /\.(png|jpg|gif|svg|jpeg)$/
-  rightGif: String
+  leftGif: any
+  rightGif: any
   lists: FirebaseListObservable<any[]>
   picture = ''
   errorMessage: String
@@ -43,8 +49,7 @@ export class WelcomeComponent implements OnInit {
   uid: String
   charoy: String = 'active'
 
-
-  constructor(private af: AngularFire, private router: Router, private signin: SignInService) {
+  constructor(private af: AngularFire, private router: Router, private signin: SignInService, private http: Http) {
     this.lists = af.database.list('/lists')
     this.private = false
     this.uid = 'null'
@@ -67,7 +72,8 @@ export class WelcomeComponent implements OnInit {
         this.af.auth.subscribe(authData => {
           this.uid = authData.uid
         })
-        id = this.lists.push({name: listName, desc: listDesc, picture: listImg, vote: voteValue, private: this.private, owner: this.uid}).key
+        id = this.lists.push({name: listName, desc: listDesc, picture: listImg, vote: voteValue,
+          private: this.private, owner: this.uid}).key
         this.router.navigate(['/private-lists/' + id])
       } else if (this.private === false) {
         id = this.lists.push({name: listName, desc: listDesc, picture: listImg , vote: voteValue, private: this.private}).key
@@ -78,6 +84,14 @@ export class WelcomeComponent implements OnInit {
     } else {
       this.errorMessage = 'Enter a message please'
     }
+  }
+
+  updateUrl(event) {
+    this.picture = this.rightGifs[Math.floor(Math.random() * this.rightGifs.length)]
+  }
+
+  checkImage(e) {
+    this.picture = e.target.value.match(/\.(png|jpg|gif|svg|jpeg)$/) ? e.target.value : null
   }
 
 }
