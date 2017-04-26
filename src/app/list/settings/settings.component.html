@@ -4,8 +4,15 @@
 
   <md-dialog-content>
     <md-list *ngIf="users | async as res ">
+      
+      <md-list-item *ngIf="(data.list | async)?.owner as userID">
+        <img md-list-avatar class="waffler-picture" [src]="res[userID].avatar" alt="...">
+        <h3 md-line> {{ res[userID].name }} </h3>
+        <h3 md-line> {{ res[userID].email }} </h3>
+      </md-list-item>
+      
       <md-list-item *ngFor="let userID of (data.list | async)?.shared | keys">
-        <img md-list-avatar [src]="res[userID].avatar" alt="...">
+        <img md-list-avatar class="waffler-picture" [src]="res[userID].avatar" alt="...">
         <h3 md-line> {{ res[userID].name }} </h3>
         <h3 md-line> {{ res[userID].email }} </h3>
         <md-icon class="hover-effect" (click)="deleteUser(userID)">clear</md-icon>

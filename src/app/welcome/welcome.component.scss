@@ -68,11 +68,11 @@ h1 {
 }
 
 .waffle-form {
-    top: 50px;
     width: 30%;
     padding: 50px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     border: 2px solid rgb(29, 164, 86);
     
     md-card-content {

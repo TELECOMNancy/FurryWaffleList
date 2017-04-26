@@ -1,14 +1,17 @@
 <ng-container *ngIf="loading" >
   <div id="waffle-list-container">
-    <md-card class="waffle-list">
+    <md-card class="waffle-list" *ngIf="list | async as l">
       <md-card-header>
-        <div md-card-avatar class="waffler-picture">
-          <img src="https://akimg2.ask.fm/assets2/060/372/337/664/normal/av_e1019141bd22089d0fff2701ddac2914.jpg" alt="">
+        <div md-card-avatar class="waffler-picture" *ngIf="users | async as u">
+            <!--<pre>
+              {{ u[l.owner] | json }}
+            </pre>-->
+          <img [src]="u[l.owner] ? u[l.owner].avatar : '/assets/logo_simple_right.png'" alt="">
         </div>
         <md-card-title>
-          {{ (list | async)?.name }}
+          {{ l.name }}
         </md-card-title>
-        <md-card-subtitle>{{ (list | async)?.desc }}</md-card-subtitle>
+        <md-card-subtitle>{{ l.desc ? l.desc : '&zwnj;' }}</md-card-subtitle>
 
         <button id="more-button" md-icon-button [mdMenuTriggerFor]="menu">
           <md-icon>more_vert</md-icon>
@@ -34,28 +37,17 @@
       </div>
 
       <md-card-content>
-        <!--
-        <p>
-          Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi.
-          Il faut qu'on se repartisse les achats pour la soirée ;).
-        </p>
-        -->
-
         <md-list>
           <md-list-item *ngFor="let item of itemElements | async">
             <ng-container *ngIf="item" >
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
-                {{item.voteValue}} {{ item.name }} {{item.index}}
+                <!--{{item.index}}--> {{ item.name }} 
                 <div class="item-controls">
-                  <ng-container *ngIf= "uid " ><!-- afficher si le mec est co -->
-                    <ng-container *ngIf= "affVote == false ; else elseAvoter"> <!-- affichage si le mec na pas voter sur la list -->
-                      <md-icon class="hover-effect" (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
-                    </ng-container>
-                    <ng-template #elseAvoter>
-                      <ng-container *ngIf= "checkVoted(item) == true">
-                        <md-icon class="hover-effect" (click)="removeVote(item.$key, item.voteValue)">thumb_down</md-icon>
-                      </ng-container>
-                    </ng-template>
+                  <md-chip-list>
+                    <md-chip>{{item.voteValue}}</md-chip>
+                  </md-chip-list>
+                  <ng-container *ngIf= "uid">
+                    <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
                   </ng-container>
                   <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
@@ -64,7 +56,7 @@
               <ng-template #elseBlock>
                 <div class="item-container">
                   <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
-                  {{ item.name }} {{item.index}} {{item.$key}}
+                  {{ item.name }} <!--{{item.index}} {{item.$key}}>-->
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>

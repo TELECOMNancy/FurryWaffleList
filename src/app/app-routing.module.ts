@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     component: ListComponent
   },
   {
-    path: 'lists/:key',
+    path: 'private-lists/:key',
     component: ListComponent
   },
   {

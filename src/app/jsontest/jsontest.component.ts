@@ -19,13 +19,10 @@ export class JSONtestComponent implements OnInit {
 
 	ngOnInit() {
 		this.key = this.route.snapshot.params['key']
-		this.list = this.service.getList(this.key)
-		this.itemElements = this.service.getItems(this.key)
-
-		this.service.getItems(this.key).forEach(items => {
-			items.forEach(item => {
-
-			})
+		this.json = 'coucu'
+		this.service.getList(this.key).subscribe(function(l)  {
+			this.json = JSON.stringify(l)
+			console.log(this.json)	
 		})
 	}
 }

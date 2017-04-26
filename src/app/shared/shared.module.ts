@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { MdButtonModule } from '@angular/material'
 import { MdSidenavModule } from '@angular/material'
 import { MdIconModule } from '@angular/material'
+import { MdChipsModule } from '@angular/material'
 import { MdCheckboxModule } from '@angular/material'
 import { MdListModule } from '@angular/material'
 import { MdCardModule } from '@angular/material'
@@ -37,6 +38,7 @@ const modules = [
   MdDialogModule,
   MdProgressSpinnerModule,
   ListItemModule,
+  MdChipsModule
 ]
 
 @NgModule({

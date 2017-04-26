@@ -25,7 +25,10 @@ export class SettingsComponent {
 
   deleteUser(userID) {
     this.serviceList.getUsersList(this.data.key).remove(userID)
-  }
+    if (this.data.uid === userID) {
+      this.dialogRef.close()
+    }
+}
 
   addEmail(event) {
     this.service.getUsers().subscribe( tmp => {

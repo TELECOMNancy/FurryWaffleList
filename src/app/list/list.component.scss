@@ -6,6 +6,10 @@
     padding: 5% 25%;
 }
 
+.hasVoted {
+    color: black !important;
+}
+
 .deleteButton {
     margin: 10px;
 }
@@ -86,6 +90,13 @@ md-icon {
     align-content: center;
     height: 100%;
     float: right;
+}
+
+md-chip-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 }
 
 

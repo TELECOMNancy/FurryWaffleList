@@ -7,6 +7,7 @@ import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material'
 import { SettingsComponent } from './settings/settings.component'
 import { ConfirmDeletionDialogComponent } from './confirm-deletion-dialog/confirm-deletion-dialog.component'
 import { SignInService } from '../providers/sign-in.service'
+import { UsersService } from '../providers/users.service'
 import {MdProgressSpinnerModule} from '@angular/material'
 import { CsvExport } from '../csv-export'
 
@@ -15,91 +16,100 @@ import { CsvExport } from '../csv-export'
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit{
+export class ListComponent implements OnInit {
   itemElements: FirebaseListObservable<any[]>
   errorMessage: String
   itemInput: string
   list: FirebaseObjectObservable<any>
   private: FirebaseObjectObservable<any>
-  privateValue: string
   key: string
-  owner: FirebaseObjectObservable<any>
-  ownerKey: string
   uid = ''
+  users: any
   loading: boolean
   listName: string
   lastIndex = 0
-
   displayVote: boolean
   vote: FirebaseObjectObservable<any>
   listVote: boolean
-  affVote: boolean
+  canVote: boolean
 
 
-
-  constructor(private af: AngularFire, private route: ActivatedRoute, private service: ListsService, public dialog: MdDialog,
+  constructor(
+    private af: AngularFire,
+    private route: ActivatedRoute,
+    private service: ListsService,
+    public dialog: MdDialog,
+    public usersService: UsersService,
     private signin: SignInService, private router: Router) {
-    this.itemInput = ''
+      this.itemInput = ''
+      this.users = usersService.getUsersObject()
   }
 
   ngOnInit() {
     this.displayVote = true
     this.key = this.route.snapshot.params['key']
+    this.itemElements = this.service.getItems(this.key)
     this.loading = false
     this.list = this.service.getList(this.key)
-    this.itemElements = this.service.getItems(this.key)
-    this.private = this.service.getPrivate(this.key)
-    this.private.subscribe(snapshot => {
-      this.privateValue = snapshot.val()
-      if (this.privateValue === 'true') {
-        this.owner = this.service.getOwner(this.key)
-        this.owner.subscribe( snapshot => {
-          this.ownerKey = snapshot.val()
-          this.af.auth.subscribe(authData => {
-            if (this.signin.isAuth === true) {
-              this.uid = authData.uid
-            }
-          })
-          if (this.uid === '' || this.ownerKey !== this.uid) {
-            this.router.navigate(['/'])
-          }
-          this.loading = true
-        })
-      }
-      else {
-        this.loading = true
-    }
-  })
+    this.list.subscribe(l => {
+      this.checkAuthorization(l)
+      this.processVotes(l)
+    })
+  }
 
 
-  this.vote = this.service.getVote(this.key) // on regarde si il s'agit d'une liste de vote
-  this.vote.subscribe(votecheck => {
-  this.listVote = votecheck.val()
-    if (this.listVote) {  // si oui alors
+  processVotes(l: any) {
+    if (l.vote) {
       this.af.auth.subscribe(authData => {  // regarder si le mec est loger
         if (this.signin.isAuth === true) {  // si oui regarder si il a voter
-           this.uid = authData.uid
-           this.affVote = false
-           this.itemElements.subscribe(items => {
-             items.forEach(elem => {
-               if(elem.voted){
-                 if (elem.voted[this.uid]) {
-                   this.affVote = true
-                 }
-               }
-                console.log(this.affVote)
-             })
-
-           })
-        }else{ // sinon ne rien faire et afficher la page sans l'option de vote
-            this.affVote = true
+          this.uid = authData.uid
+          this.canVote = true
+          this.itemElements.subscribe(items => {
+            items.forEach(elem => {
+              if (elem.voted) {
+                if (elem.voted[this.uid]) {  this.canVote = false  }
+              }
+            })
+          })
+        } else {
+          this.canVote = true
         }
       })
     }
-  })
-}
+  }
 
-  addVote(key: string, value: number) {
+  checkAuthorization(l: any) {
+    if (l.private) {
+      this.af.auth.subscribe(authData => {
+        if (this.signin.isAuth === true) {
+          this.uid = authData.uid
+        }
+      })
+      if (!(l.owner === this.uid || (l.shared && l.shared[this.uid]))) {
+        this.router.navigate(['/'])
+      }
+      this.loading = true
+    } else {
+      this.loading = true
+    }
+  }
+
+  toggleVote(item, hasVoted) {
+    console.log(item, hasVoted, this.canVote)
+    if (hasVoted && !this.canVote) {
+      this.itemElements.update(item.$key, { voteValue: item.voteValue - 1 })
+      this.af.database.object('/lists/' + this.key + '/items/' + item.$key + '/voted/' + this.uid).remove()
+      this.canVote = true
+  } else {
+      if (this.canVote) {
+        this.itemElements.update(item.$key, { voteValue: item.voteValue + 1 })
+        this.af.database.object('/lists/' + this.key + '/items/' + item.$key + '/voted/' + this.uid).set(true)
+        this.canVote = false
+      }
+    }
+  }
+
+  /*addVote(key: string, value: number) {
     this.itemElements.update(key, { voteValue: value + 1 })
     const toSend = this.af.database.object('/lists/'+this.key+'/items/'+key+'/voted/'+this.uid)
     toSend.set(true)
@@ -109,11 +119,11 @@ export class ListComponent implements OnInit{
     this.itemElements.update(key, { voteValue: value - 1 })
     this.af.database.object('/lists/'+this.key+'/items/'+key+'/voted/'+this.uid).remove()
     this.affVote = false;
-  }
+  }*/
 
-  deleteElement(key: string, voter : Boolean) {
+  deleteElement(key: string, voter: Boolean) {
     this.itemElements.remove(key)
-    this.affVote = !voter
+    this.canVote = !voter
   }
 
   updateItem(itemkey: string, check: boolean) {
@@ -188,8 +198,9 @@ export class ListComponent implements OnInit{
       disableClose: false,
       data: {
         key: this.key,
-        list: this.list
-      }
+        list: this.list,
+        uid: this.uid  
+    }
     }
     const dialogRef = this.dialog.open(SettingsComponent, config)
   }
