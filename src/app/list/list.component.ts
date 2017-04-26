@@ -7,6 +7,7 @@ import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material'
 import { SettingsComponent } from './settings/settings.component'
 import { SignInService } from '../providers/sign-in.service'
 import {MdProgressSpinnerModule} from '@angular/material'
+import { CsvExport } from '../csv-export'
 
 @Component({
   selector: 'app-list',
@@ -25,6 +26,7 @@ export class ListComponent implements OnInit {
   ownerKey: string
   uid = ''
   loading: boolean
+  listName: string
 
 
   constructor(private af: AngularFire, private route: ActivatedRoute, private service: ListsService, public dialog: MdDialog,
@@ -89,6 +91,20 @@ export class ListComponent implements OnInit {
     const dialogRef = this.dialog.open(SettingsComponent, config)
     /*dialogRef.afterClosed().subscribe(result => {
     })*/
+  }
+
+export2CSV() {
+    let data = []
+    this.list.subscribe(list => {this.listName = list.name
+      this.service.getItems(list.$key).forEach(items => {
+        items.forEach(item => {
+          const elem = { name: item.name, checked: item.checked, voteValue: item.voteValue}
+          data.push(elem)
+        })
+        const test = new CsvExport()
+        test.exportCsvData(this.listName, data)
+      })
+  })
   }
 
 }
