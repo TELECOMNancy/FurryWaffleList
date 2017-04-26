@@ -8,7 +8,7 @@
         <md-card-title>
           {{ (list | async)?.name }}
         </md-card-title>
-        <md-card-subtitle>Le gras, c'est la vie!</md-card-subtitle>
+        <md-card-subtitle>{{ (list | async)?.desc }}</md-card-subtitle>
 
         <button id="more-button" md-icon-button [mdMenuTriggerFor]="menu">
           <md-icon>more_vert</md-icon>
@@ -34,10 +34,12 @@
       </div>
 
       <md-card-content>
+        <!--
         <p>
           Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi.
           Il faut qu'on se repartisse les achats pour la soirée ;).
         </p>
+        -->
 
         <md-list>
           <md-list-item *ngFor="let item of itemElements | async">

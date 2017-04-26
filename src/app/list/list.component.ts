@@ -49,21 +49,22 @@ export class ListComponent implements OnInit {
     this.private.subscribe(snapshot => {
       this.privateValue = snapshot.val()
       if (this.privateValue === 'true') {
-      this.owner = this.service.getOwner(this.key)
-      this.owner.subscribe( snapshot => {
-        this.ownerKey = snapshot.val()
-        this.af.auth.subscribe(authData => {
-          if (this.signin.isAuth === true) {
-             this.uid = authData.uid
+        this.owner = this.service.getOwner(this.key)
+        this.owner.subscribe( snapshot => {
+          this.ownerKey = snapshot.val()
+          this.af.auth.subscribe(authData => {
+            if (this.signin.isAuth === true) {
+              this.uid = authData.uid
+            }
+          })
+          if (this.uid === '' || this.ownerKey !== this.uid) {
+            this.router.navigate(['/'])
           }
+          this.loading = true
         })
-        if (this.uid === '' || this.ownerKey !== this.uid) {
-          this.router.navigate(['/'])
-        }
+      }
+      else {
         this.loading = true
-      })
-    }else {
-      this.loading = true
     }
   })
 
@@ -92,7 +93,6 @@ export class ListComponent implements OnInit {
         }
       })
     }
-
   })
 }
 
@@ -110,7 +110,7 @@ export class ListComponent implements OnInit {
 
   deleteElement(key: string, voter : Boolean) {
     this.itemElements.remove(key)
-    this.affVote = !voter 
+    this.affVote = !voter
   }
 
   updateItem(itemkey: string, check: boolean) {

@@ -8,9 +8,18 @@
   <md-card class="waffle-form">
     <md-card-content>
         
-      <md-input-container>
-        <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
-      </md-input-container>
+      <section>
+        <md-input-container>
+          <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
+        </md-input-container>
+      </section>
+        
+      <section>
+        <md-input-container>
+          <textarea #listDesc mdInput maxlength="250" placeholder="Description"></textarea>
+          <md-hint align="end">{{listDesc.value.length}} / 250</md-hint>
+        </md-input-container>
+      </section>
       
       <div class='options'>
         {{ errorMessage }}
@@ -28,7 +37,7 @@
         </section>
         
         <section>
-          <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
+          <button (click)="createList(listName.value, listDesc.value, voteValue.checked)" md-raised-button>Let's list it!</button>
         </section>
 
       </div>

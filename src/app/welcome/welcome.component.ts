@@ -56,7 +56,7 @@ export class WelcomeComponent implements OnInit {
     this.charoy = (event.x > window.innerWidth / 2) ? 'inactive' : 'active'
   }
 
-  createList(listName: String, voteValue: boolean) {
+  createList(listName: String, listDesc: String, voteValue: boolean) {
      if (listName.length > 0) {
       this.errorMessage = ''
       let id = ''
@@ -64,10 +64,10 @@ export class WelcomeComponent implements OnInit {
         this.af.auth.subscribe(authData => {
           this.uid = authData.uid
         })
-        id = this.lists.push({name: listName, vote: voteValue, private: this.private, owner: this.uid}).key
+        id = this.lists.push({name: listName, desc: listDesc, vote: voteValue, private: this.private, owner: this.uid}).key
         this.router.navigate(['/private-lists/' + id])
       } else if (this.private === false) {
-        id = this.lists.push({name: listName, vote: voteValue, private: this.private}).key
+        id = this.lists.push({name: listName, desc: listDesc, vote: voteValue, private: this.private}).key
         this.router.navigate(['lists/' + id])
       } else {
         this.errorMessage = 'You need to connect to create a private list'
