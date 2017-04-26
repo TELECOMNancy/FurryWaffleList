@@ -30,6 +30,12 @@ export class ListComponent implements OnInit{
   listName: string
   lastIndex = 0
 
+  displayVote: boolean
+  vote: FirebaseObjectObservable<any>
+  listVote: boolean
+  affVote: boolean
+
+
 
   constructor(private af: AngularFire, private route: ActivatedRoute, private service: ListsService, public dialog: MdDialog,
     private signin: SignInService, private router: Router) {
@@ -37,6 +43,7 @@ export class ListComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.displayVote = true
     this.key = this.route.snapshot.params['key']
     this.loading = false
     this.list = this.service.getList(this.key)
@@ -45,31 +52,68 @@ export class ListComponent implements OnInit{
     this.private.subscribe(snapshot => {
       this.privateValue = snapshot.val()
       if (this.privateValue === 'true') {
-      this.owner = this.service.getOwner(this.key)
-      this.owner.subscribe( snapshot => {
-        this.ownerKey = snapshot.val()
-        this.af.auth.subscribe(authData => {
-          if (this.signin.isAuth === true) {
-             this.uid = authData.uid
+        this.owner = this.service.getOwner(this.key)
+        this.owner.subscribe( snapshot => {
+          this.ownerKey = snapshot.val()
+          this.af.auth.subscribe(authData => {
+            if (this.signin.isAuth === true) {
+              this.uid = authData.uid
+            }
+          })
+          if (this.uid === '' || this.ownerKey !== this.uid) {
+            this.router.navigate(['/'])
           }
+          this.loading = true
         })
-        if (this.uid === '' || this.ownerKey !== this.uid) {
-          this.router.navigate(['/'])
-        }
+      }
+      else {
         this.loading = true
+    }
+  })
+
+
+  this.vote = this.service.getVote(this.key) // on regarde si il s'agit d'une liste de vote
+  this.vote.subscribe(votecheck => {
+  this.listVote = votecheck.val()
+    if (this.listVote) {  // si oui alors
+      this.af.auth.subscribe(authData => {  // regarder si le mec est loger
+        if (this.signin.isAuth === true) {  // si oui regarder si il a voter
+           this.uid = authData.uid
+           this.affVote = false
+           this.itemElements.subscribe(items => {
+             items.forEach(elem => {
+               if(elem.voted){
+                 if (elem.voted[this.uid]) {
+                   this.affVote = true
+                 }
+               }
+                console.log(this.affVote)
+             })
+
+           })
+        }else{ // sinon ne rien faire et afficher la page sans l'option de vote
+            this.affVote = true
+        }
       })
-    }else {
-      this.loading = true
     }
   })
 }
 
   addVote(key: string, value: number) {
     this.itemElements.update(key, { voteValue: value + 1 })
+    const toSend = this.af.database.object('/lists/'+this.key+'/items/'+key+'/voted/'+this.uid)
+    toSend.set(true)
   }
 
-  deleteElement(key: string) {
+  removeVote(key: string, value: number) {
+    this.itemElements.update(key, { voteValue: value - 1 })
+    this.af.database.object('/lists/'+this.key+'/items/'+key+'/voted/'+this.uid).remove()
+    this.affVote = false;
+  }
+
+  deleteElement(key: string, voter : Boolean) {
     this.itemElements.remove(key)
+    this.affVote = !voter
   }
 
   updateItem(itemkey: string, check: boolean) {
@@ -130,6 +174,13 @@ export class ListComponent implements OnInit{
     this.itemElements.push({ name: this.itemInput, checked: false, voteValue: 0, index: this.lastIndex })
     this.itemInput = ''
     this.lastIndex += 1
+  }
+
+  checkVoted(item: any): Boolean {
+    if(item.voted){
+        return item.voted.hasOwnProperty(this.uid)
+    }
+    return false
   }
 
   showSettings() {

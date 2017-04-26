@@ -16,9 +16,9 @@ import { WelcomeComponent } from './welcome/welcome.component'
 import { ListsService } from './providers/lists.service'
 import { SignInService } from './providers/sign-in.service'
 import { SignInComponent } from './sign-in/sign-in.component'
-import { PrivateListsComponent } from './private-lists/private-lists.component'
+import { ListsModule } from './lists/lists.module'
 import { SafeHtmlPipe } from './safe-html.pipe'
-import { SharedListsComponent } from './shared-lists/shared-lists.component'
+import { JSONtestComponent } from './jsontest/jsontest.component'
 
 
 export const firebaseConfig = {
@@ -34,9 +34,8 @@ export const firebaseConfig = {
     ListsComponent,
     WelcomeComponent,
     SignInComponent,
-    PrivateListsComponent,
     SafeHtmlPipe,
-    SharedListsComponent
+    JSONtestComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +50,7 @@ export const firebaseConfig = {
     }),
     AppRoutingModule,
     MdToolbarModule,
+    ListsModule,
   ],
   providers: [ListsService, SignInService, UsersService],
   bootstrap: [AppComponent]

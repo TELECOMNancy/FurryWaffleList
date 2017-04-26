@@ -1,0 +1,11 @@
+@import 'theme';
+
+md-card {
+    display: inline-block;
+    margin: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid $dark-green;
+    }
+}

@@ -51,4 +51,8 @@ export class ListsService {
     return this.af.database.object('/lists/' + key + '/private', { preserveSnapshot: true })
   }
 
+  getVote(key: string): FirebaseObjectObservable<any[]> {
+    return this.af.database.object('/lists/' + key + '/vote', { preserveSnapshot: true })
+  }
+
 }

@@ -8,27 +8,29 @@
   <md-card class="waffle-form">
     <md-card-content>
         
-      <md-input-container>
-        <input #listName mdInput placeholder="List name" value="SuperWaffleLists">
-      </md-input-container>
+      <section>
+        <md-input-container>
+          <input #listName mdInput placeholder="List title">
+        </md-input-container>
+      </section>
+        
+      <section style="height: auto">
+        <md-input-container>
+          <textarea mdAutosizeMinRows="4" #listDesc mdInput maxlength="140" mdTextareaAutosize placeholder="Description"></textarea>
+          <md-hint align="end">{{listDesc.value.length}} / 140</md-hint>
+        </md-input-container>
+      </section>
       
       <div class='options'>
         {{ errorMessage }}
         
         <section>
           <md-checkbox #voteValue>Enable the vote</md-checkbox>
-        </section>
-        
-        <section>
           <md-checkbox [(ngModel)]="private">Make the list private</md-checkbox>
-          <!--<md-radio-group [(ngModel)]="private">
-            <md-radio-button value='false'>Public</md-radio-button>
-            <md-radio-button value='true'>Private</md-radio-button>
-          </md-radio-group>-->
         </section>
         
         <section>
-          <button (click)="createList(listName.value , voteValue.checked)" md-raised-button>Let's list it!</button>
+          <button (click)="createList(listName.value, listDesc.value, voteValue.checked)" md-raised-button>Let's list it!</button>
         </section>
 
       </div>

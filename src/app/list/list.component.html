@@ -8,7 +8,7 @@
         <md-card-title>
           {{ (list | async)?.name }}
         </md-card-title>
-        <md-card-subtitle>Le gras, c'est la vie!</md-card-subtitle>
+        <md-card-subtitle>{{ (list | async)?.desc }}</md-card-subtitle>
 
         <button id="more-button" md-icon-button [mdMenuTriggerFor]="menu">
           <md-icon>more_vert</md-icon>
@@ -34,10 +34,12 @@
       </div>
 
       <md-card-content>
+        <!--
         <p>
           Pour cette semaine de coding week, M Charoy paye le barbecue et la binouze ce vendredi.
           Il faut qu'on se repartisse les achats pour la soirée ;).
         </p>
+        -->
 
         <md-list>
           <md-list-item *ngFor="let item of itemElements | async">
@@ -45,8 +47,17 @@
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
                 {{item.voteValue}} {{ item.name }} {{item.index}}
                 <div class="item-controls">
-                  <md-icon class="hover-effect" (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
-                  <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
+                  <ng-container *ngIf= "uid " ><!-- afficher si le mec est co -->
+                    <ng-container *ngIf= "affVote == false ; else elseAvoter"> <!-- affichage si le mec na pas voter sur la list -->
+                      <md-icon class="hover-effect" (click)="addVote(item.$key, item.voteValue)">thumb_up</md-icon>
+                    </ng-container>
+                    <ng-template #elseAvoter>
+                      <ng-container *ngIf= "checkVoted(item) == true">
+                        <md-icon class="hover-effect" (click)="removeVote(item.$key, item.voteValue)">thumb_down</md-icon>
+                      </ng-container>
+                    </ng-template>
+                  </ng-container>
+                  <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
 

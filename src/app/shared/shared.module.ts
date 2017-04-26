@@ -14,6 +14,8 @@ import { MdDialogModule } from '@angular/material'
 import { MdAutocompleteModule } from '@angular/material'
 import { MdDialog, MdDialogRef } from '@angular/material'
 import { MdProgressSpinnerModule } from '@angular/material'
+import { ListItemModule } from './list-item/list-item.module'
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { KeysPipe } from './keys.pipe'
 
@@ -34,12 +36,12 @@ const modules = [
   MdMenuModule,
   MdDialogModule,
   MdProgressSpinnerModule,
-
+  ListItemModule,
 ]
 
 @NgModule({
   imports: modules,
-  exports: [  KeysPipe, modules ],
+  exports: [  KeysPipe, modules, ListItemModule],
   // declarations: [],
   providers: [MdDialog],
   declarations: [KeysPipe],
