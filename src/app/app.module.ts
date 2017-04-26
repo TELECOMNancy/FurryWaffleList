@@ -18,7 +18,8 @@ import { SignInService } from './providers/sign-in.service'
 import { SignInComponent } from './sign-in/sign-in.component'
 import { PrivateListsComponent } from './private-lists/private-lists.component'
 import { SafeHtmlPipe } from './safe-html.pipe'
-import { SharedListsComponent } from './shared-lists/shared-lists.component'
+import { SharedListsComponent } from './shared-lists/shared-lists.component';
+import { JSONtestComponent } from './jsontest/jsontest.component'
 
 
 export const firebaseConfig = {
@@ -37,6 +38,7 @@ export const firebaseConfig = {
     PrivateListsComponent,
     SafeHtmlPipe,
     SharedListsComponent,
+    JSONtestComponent,
   ],
   imports: [
     BrowserModule,
