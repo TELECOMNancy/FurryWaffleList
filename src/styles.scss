@@ -60,6 +60,16 @@ html, body {
   padding-top: 100%;
 }
 
+.hover-effect {
+  color: rgb(210,210,210);
+  fill: rgb(210,210,210);
+  cursor: pointer;
+  &:hover {
+     color: black;
+     fill: black;
+  }
+}
+
 .circular {
   animation: rotate 2s linear infinite;
   height: 100%;
