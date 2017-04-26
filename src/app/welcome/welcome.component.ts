@@ -39,7 +39,7 @@ export class WelcomeComponent implements OnInit {
   private: Boolean
   uid: String
   charoy: String = 'active'
-  
+
 
   constructor(private af: AngularFire, private router: Router, private signin: SignInService) {
     this.lists = af.database.list('/lists')

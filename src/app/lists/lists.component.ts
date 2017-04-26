@@ -23,7 +23,7 @@ export class ListsComponent implements OnInit {
     this.lists = this.af.database.list('/lists', {
       query: {
         orderByChild: 'private',
-        equalTo: 'false'
+        equalTo: false
       }
     })
   }
