@@ -35,13 +35,16 @@
       <div class="waffle-list-illustration">
         <img [src]="(list | async)?.picture ? (list | async)?.picture : 'https://s-media-cache-ak0.pinimg.com/originals/23/4d/cc/234dcc371d76cd8fbe531a74110483e9.png'">
       </div>
+      <ng-container *ngIf = "!uid" >
+         <md-chip color='warn' selected="true">You must be logged to vote.</md-chip>
+      </ng-container>
 
       <md-card-content>
         <md-list>
           <md-list-item *ngFor="let item of itemElements | async">
             <ng-container *ngIf="item" >
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
-                <ng-container *ngIf= "uid">
+                <ng-container *ngIf= "uid" >
                   <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
                 </ng-container>
                 <md-input-container>
