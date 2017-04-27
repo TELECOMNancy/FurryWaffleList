@@ -24,6 +24,7 @@ export class SignInComponent implements OnInit {
     this.af.auth.login({
       provider: this.getProvider(from)
     })
+    this.router.navigate(['/'])
   }
 
   logout() {
