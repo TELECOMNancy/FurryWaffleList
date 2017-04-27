@@ -11,28 +11,42 @@
 
 ### J1: 
 
-* Affichage de liste globale
-* Création d'une liste
-* Edition d'une liste
-* Ajouter un élément à une liste
-* Supprimer un élément d'une liste
-* Éditer un élément d'une liste
-* Suppression d'une liste
+* Global list view
+* List creation
+* Element editing
+* Adding a list element
+* Deleting a list element
+* List editing
+* Deleting a list
 
 ### J2: 
 
-* Connexion via OAuth
-* Système de vote
-* Checkbox
-* Gestion de liste privé
-* Partage de liste
+* Oauth login
+* Voting system
+* Checkbox on list
+* Private list
+* Sharing list
 
 ### J3: 
 
-* Gestion des utilisateurs
-* Export CSV
+* User management
+* CSV export
+* List organization
+* Pseudo-API
 
+### J4:
 
+* Debug and final release
+
+## How to Use the API
+
+You can see JSON list with adding /json at the end of the list URL.
+
+If you want to retrieve full data structure, you can use Firebase DB API.
+
+    curl 'https://furrywafflelist.firebaseio.com/lists/[key].json'
+
+More information on: [Firebase REST Doc](https://firebase.google.com/docs/reference/rest/database/)
 
 ## Installation
 
