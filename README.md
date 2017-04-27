@@ -6,6 +6,21 @@
 
 [furrywafflelist.firebaseapp.com](https://furrywafflelist.firebaseapp.com)
 
+## Testing for Mr. Charoy:
+
+* I can create a public with and without login.
+* I can create a private list with login.
+* I can share a private list, they will appears in Shared List for the other user that have access to this list
+* I can delete a list which I have access to.
+* I can add elements on list.
+* I can download my list in CSV format.
+* I can vote on a vote list.
+* I can change elements organization.
+* I can edit a list element.
+* All of these actions work concurrently.
+* You can access JSON list structure with /json in URL
+* I can add an image URL for my list.
+
 ## RoadMap
 
 ### J1: 
