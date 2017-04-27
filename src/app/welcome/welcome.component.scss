@@ -9,6 +9,15 @@ $height: 500px;
     align-items: center;
 }
 
+.devs {
+    display: inline-block;
+    //border-radius: 50%;
+    //background: orange;
+    img {
+        border-radius: 50%;
+    }
+}
+
 h1 {
     text-align: center;
 }
@@ -70,14 +79,15 @@ h1 {
 
 .waffle-form {
     width: 30%;
-    height: $height;
+    height: $height - 50px;
     box-sizing: border-box;
     padding: 30px;
     display: flex;
     position: relative;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 2px solid $dark-green;
+    //border-bottom: 2px solid $dark-green;
+    border: 2px solid $dark-green;
     //border-top: 2px solid darkgreen;
     box-shadow: none !important;
     &:after {
@@ -172,16 +182,6 @@ h1 {
     }    
 }
 
-
-.devs {
-    display: inline-block;
-    border-radius: 50%;
-}
-
-img {
-    border-radius: 40px;
-    border: 2px solid $dark-green;
-}
 
 
 

@@ -14,6 +14,7 @@ export class SignInComponent implements OnInit {
   isAuth = false
   authColor = 'warn'
   user: any
+  connected: any
 
   constructor(public af: AngularFire, public service: ListsService, private router: Router ) {this.af.auth.subscribe(user => this.changeState(user)) }
 
