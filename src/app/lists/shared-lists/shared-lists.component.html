@@ -1,4 +1,9 @@
 <div class="lists-container">
+	<ng-container *ngIf = "!uid">
+		<md-chip-list>
+		 <md-chip color='warn' selected="true">You must be logged to view lists shared with you.</md-chip>
+	 </md-chip-list>
+	</ng-container>
 	<ng-container *ngFor="let list of lists | async">
 		<ng-container *ngIf="checkAccess(list)">
 			<app-list-item [list]="list" (click)="onSelect(list)"></app-list-item>
