@@ -8,6 +8,10 @@ html, body {
 
 .waffler-picture {
   border: 2px solid $dark-green;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .spinner-container {
@@ -20,21 +24,9 @@ html, body {
     margin: auto;
 }
 
-.waffler-picture img {
-    height: 40px;
-    width: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
 
 .waffle-input {
   border: none;
-}
-
-.waffle-input md-input-container {
-  margin-top: 20px;
-  width: 100%;
 }
 
 .loader {
@@ -128,9 +120,31 @@ html, body {
     height: 48px;
     position: relative;
     
-    border-bottom: 1px solid rgba(150,150,150,0.15);
+    //border-bottom: 1px solid rgba(150,150,150,0.15);
+     md-checkbox {
+       float: left;
+     }
+
+     md-input-container {
+       position: absolute;
+       float: left;
+       //width: 100%;
+       //padding-right: 47.78px;
+       right: 0;
+       left: 35px;
+       //box-sizing: border-box;
+     }
  }
 
+ .waffle-input md-input-container {
+    position: relative;
+    float: none;
+    margin-top: 20px;
+    width: 100%;
+    left: 0;
+ }
+
+ 
 .loader {
   position: relative;
   margin: 0 auto;

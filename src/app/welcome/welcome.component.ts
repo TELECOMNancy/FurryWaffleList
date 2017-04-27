@@ -73,10 +73,11 @@ export class WelcomeComponent implements OnInit {
           this.uid = authData.uid
         })
         id = this.lists.push({name: listName, desc: listDesc, picture: listImg, vote: voteValue,
-          private: this.private, owner: this.uid}).key
+          private: this.private, owner: this.uid, lastIndex: 0}).key
         this.router.navigate(['/private-lists/' + id])
       } else if (this.private === false) {
-        id = this.lists.push({name: listName, desc: listDesc, picture: listImg , vote: voteValue, private: this.private}).key
+        id = this.lists.push({name: listName, desc: listDesc, picture: listImg , vote: voteValue, private: this.private,
+        lastIndex: 0}).key
         this.router.navigate(['lists/' + id])
       } else {
         this.errorMessage = 'You need to connect to create a private list'

@@ -28,7 +28,8 @@ export class ListComponent implements OnInit {
   users: any
   loading: boolean
   listName: string
-  lastIndex = 0
+  lastIndex: number
+  valueLastIndex: number
   displayVote: boolean
   vote: FirebaseObjectObservable<any>
   listVote: boolean
@@ -55,15 +56,10 @@ export class ListComponent implements OnInit {
     this.list.subscribe(l => {
       this.checkAuthorization(l)
       this.processVotes(l)
-      this.initLastIndex()
+      this.lastIndex = l.lastIndex
     })
   }
 
-  initLastIndex() {
-    this.itemElements.first().subscribe(item => {
-      this.lastIndex = item[item.length - 1].index + 1
-    })
-  }
 
   processVotes(l: any) {
     if (l.vote) {
@@ -102,7 +98,6 @@ export class ListComponent implements OnInit {
   }
 
   toggleVote(item, hasVoted) {
-    console.log(item, hasVoted, this.canVote)
     if (hasVoted && !this.canVote) {
       this.itemElements.update(item.$key, { voteValue: item.voteValue - 1 })
       this.af.database.object('/lists/' + this.key + '/items/' + item.$key + '/voted/' + this.uid).remove()
@@ -129,8 +124,17 @@ export class ListComponent implements OnInit {
   }*/
 
   deleteElement(key: string, voter: Boolean) {
-    this.itemElements.remove(key)
-    this.canVote = !voter
+    this.itemElements.first().subscribe( items => {
+      const source = items.find(x => x.$key === key)
+      const dest = items.filter(x => x.index < source.index)
+
+      dest.forEach( i => {
+        this.updateItemIndex(i.$key, i.index + 1)
+      })
+      this.itemElements.remove(key)
+      this.canVote = !voter
+    })
+
   }
 
   updateItem(itemkey: string, check: boolean) {
@@ -153,9 +157,10 @@ export class ListComponent implements OnInit {
     this.itemElements.first().subscribe( items => {
         const source = items.find(x => x.$key === itemkey)
         const dest = items.find(x => x.index === source.index - 1)
-
-        this.itemElements.update(source.$key, {index: source.index - 1 })
-        this.itemElements.update(dest.$key, {index: source.index})
+        if (dest != undefined) {
+          this.itemElements.update(source.$key, {index: source.index - 1 })
+          this.itemElements.update(dest.$key, {index: source.index})
+        }
     })
   }
 
@@ -163,9 +168,9 @@ export class ListComponent implements OnInit {
     this.itemElements.first().subscribe( items => {
         const source = items.find(x => x.$key === itemkey)
         const dest = items.find(x => x.index === source.index + 1)
-
-        this.itemElements.update(source.$key, {index: source.index + 1 })
-        this.itemElements.update(dest.$key, {index: source.index})
+        if (dest != undefined) {
+          this.increaseIndex(dest.$key, dest.index)
+        }
     })
   }
 
@@ -173,6 +178,7 @@ export class ListComponent implements OnInit {
     this.itemElements.push({ name: this.itemInput, checked: false, voteValue: 0, index: this.lastIndex })
     this.itemInput = ''
     this.lastIndex += 1
+    this.list.update({lastIndex: this.lastIndex})
   }
 
   checkVoted(item: any): Boolean {

@@ -8,8 +8,6 @@ import { Router } from '@angular/router'
 })
 export class MainElementsComponent implements OnInit {
 
-  
-
   constructor(private router: Router) { }
 
   onclickLists() {

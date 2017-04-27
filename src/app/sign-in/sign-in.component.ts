@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { AngularFire, AuthProviders, FirebaseListObservable } from 'angularfire2'
 import { SafeHtmlPipe } from '../safe-html.pipe'
 import { ListsService } from '../providers/lists.service'
-
-
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-sign-in',
@@ -15,8 +14,9 @@ export class SignInComponent implements OnInit {
   isAuth = false
   authColor = 'warn'
   user: any
+  connected: any
 
-  constructor(public af: AngularFire, public service: ListsService) {this.af.auth.subscribe(user => this.changeState(user)) }
+  constructor(public af: AngularFire, public service: ListsService, private router: Router ) {this.af.auth.subscribe(user => this.changeState(user)) }
 
   ngOnInit() { }
 
@@ -28,6 +28,7 @@ export class SignInComponent implements OnInit {
 
   logout() {
     this.af.auth.logout()
+    this.router.navigate(['/'])
   }
 
   changeState(user: any = null) {

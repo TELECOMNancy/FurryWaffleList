@@ -9,12 +9,7 @@ import { SignInComponent } from './sign-in/sign-in.component'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-constructor(private router: Router) {}
-
-onclickLists() {
-  this.router.navigate(['/lists'])
-}
-
+constructor() {}
 
 
 }
