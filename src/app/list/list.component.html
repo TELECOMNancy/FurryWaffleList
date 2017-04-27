@@ -41,7 +41,7 @@
           <md-list-item *ngFor="let item of itemElements | async">
             <ng-container *ngIf="item" >
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
-                <!--{{item.index}}--> {{ item.name }} 
+                <!--{{item.index}}--> {{ item.name }}
                 <div class="item-controls">
                   <md-chip-list>
                     <md-chip>{{item.voteValue}}</md-chip>
@@ -49,6 +49,8 @@
                   <ng-container *ngIf= "uid">
                     <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
                   </ng-container>
+                  <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
+                  <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
                   <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
