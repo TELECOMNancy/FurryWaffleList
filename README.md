@@ -150,3 +150,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 	<img width="45%" src="https://raw.githubusercontent.com/thepracticaldev/orly-full-res/master/fomo-big.png" alt="Amazing book!"/>
 </p>
  
+ 
