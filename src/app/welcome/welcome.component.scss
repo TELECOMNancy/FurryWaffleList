@@ -1,6 +1,10 @@
 @import 'theme';
 $height: 500px;
 
+md-card {
+    min-width: $min-width
+}
+
 :host {
     text-align: center;
     display: flex;
@@ -174,55 +178,81 @@ h1 {
 }
 
 .devs {
+    width: 100%;
     display: inline-block;
     border-radius: 50%;
     display: flex;
+    //width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
     flex-wrap: wrap;
     justify-content: space-around;
-
-    .container{
+    .container {
         display: flex;
         flex-direction: column;
+        color: inherit;
+        text-decoration: none;
+        color: transparent;
+        transition: 0.2s;
 
+        &:hover {
+            color: gray;
+            transition: 0.3s;
+        }
         .avatar{
+            position: relative;
             width: 120px;
             height: 120px;
-            margin: 10px;
+            margin: 10px;            
+            border-radius: 50%;
             background-size: cover;
-            border: 5px solid $dark-green;
+            position: relative;
+            vertical-align: middle;
+            //box-sizing: border-box;
+            border: 3px solid white;
+            transition: 0.2s;
+            
+            &:hover {
+                transition: 0.3s;
+                border: 3px solid $dark-green;
+                color: black;
+            }
         }
+        
 
         .yann{
           background-image: url('/assets/yann.jpg');
+          background-repeat: no-repeat;
         }
 
         .yannick{
           background-image: url('/assets/yannick.jpg');
+          background-repeat: no-repeat;
         }
 
         .quentin{
           background-image: url('/assets/quentin.jpg');
+          background-repeat: no-repeat;
         }
 
         .eliot{
           background-image: url('/assets/eliot.jpg');
+          background-size: contain;
+          background-repeat: no-repeat;
         }
 
         p {
-            margin: auto;
+            margin: 5px auto;
+            margin-bottom: 10px;
         }
     }
 }
 
-img {
-    border-radius: 40px;
-    border: 2px solid $dark-green;
-}
-
 
 @media screen and (max-width: 1200px) {
+    .about {
+        width: 70%;
+    }
     .waffle-form {
         width: 50%;
     }
@@ -232,6 +262,8 @@ img {
     .about {
         width: 80%;
     }
+
+    
 
     .waffle-form {
         width: 70%;
@@ -247,4 +279,3 @@ img {
         }
     }
 }
-
