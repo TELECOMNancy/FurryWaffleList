@@ -79,14 +79,15 @@ h1 {
 
 .waffle-form {
     width: 30%;
-    height: $height;
+    height: $height - 50px;
     box-sizing: border-box;
     padding: 30px;
     display: flex;
     position: relative;
     justify-content: center;
     flex-direction: column;
-    border-bottom: 2px solid $dark-green;
+    //border-bottom: 2px solid $dark-green;
+    border: 2px solid $dark-green;
     //border-top: 2px solid darkgreen;
     box-shadow: none !important;
     &:after {

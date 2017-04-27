@@ -8,6 +8,10 @@ html, body {
 
 .waffler-picture {
   border: 2px solid $dark-green;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .spinner-container {
@@ -18,13 +22,6 @@ html, body {
     right: 0;
 
     margin: auto;
-}
-
-.waffler-picture img {
-    height: 40px;
-    width: 40px;
-    object-fit: cover;
-    border-radius: 50%;
 }
 
 
