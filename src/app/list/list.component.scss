@@ -29,6 +29,7 @@
 .item-container.waffle-input {
     border: none;
     padding: 0 16px !important;
+    height: auto;
     md-input-container {
         margin-top: 20px;
         width: 100%;
@@ -46,7 +47,7 @@ md-card-header div img {
     height: 200px;
     width: 100%;
     position: relative;
-    
+
     img {
         object-fit: cover;
         position: relative;
@@ -55,7 +56,7 @@ md-card-header div img {
         padding: 0;
         margin: 0;
     }
-    
+
     &:after {
         content: '';
         background: rgba(0,0,0,0.5);
@@ -80,7 +81,7 @@ md-icon {
     }
 }
 
-.item-controls md-icon:first-child { 
+.item-controls md-icon:first-child {
     margin-left: 0;
 }
 

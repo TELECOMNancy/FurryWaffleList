@@ -41,14 +41,14 @@
           <md-list-item *ngFor="let item of itemElements | async">
             <ng-container *ngIf="item" >
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
-                {{ item.name }} 
+                <ng-container *ngIf= "uid">
+                  <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
+                </ng-container>
+                {{ item.name }}
                 <div class="item-controls">
                   <md-chip-list>
                     <md-chip>{{item.voteValue}}</md-chip>
                   </md-chip-list>
-                  <ng-container *ngIf= "uid">
-                    <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
-                  </ng-container>
                   <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                   <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
                   <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
@@ -74,7 +74,8 @@
 
           <div class="item-container waffle-input">
             <md-input-container>
-              <input mdInput placeholder="Buy saint emilion wine!" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
+              <input mdInput #newitem placeholder="Buy saint emilion wine!" maxlength="64" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
+              <md-hint align="end">{{newitem.value.length}} / 64</md-hint>
             </md-input-container>
           </div>
         </md-list>
