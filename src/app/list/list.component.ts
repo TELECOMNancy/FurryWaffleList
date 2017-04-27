@@ -207,10 +207,6 @@ export class ListComponent implements OnInit {
     })
   }
 
-  editElement(itemKey: string) {
-    console.log('Edition de ' + itemKey)
-  }
-
 export2CSV() {
     const data = []
     this.list.subscribe(list => {this.listName = list.name
