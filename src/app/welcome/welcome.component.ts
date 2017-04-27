@@ -83,7 +83,7 @@ export class WelcomeComponent implements OnInit {
         this.errorMessage = 'You need to connect to create a private list'
       }
     } else {
-      this.errorMessage = 'Enter a message please'
+      this.errorMessage = 'Your amazing list need a title!'
     }
   }
 
