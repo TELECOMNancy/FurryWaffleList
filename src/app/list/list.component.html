@@ -44,14 +44,15 @@
                 <ng-container *ngIf= "uid">
                   <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
                 </ng-container>
-                {{ item.name }}
+                <md-input-container>
+                  <input mdInput #itemName [value]="item.name" maxlength="48" (keyup.enter)="updateItemName(item.$key, itemName)">
+                </md-input-container>
                 <div class="item-controls">
                   <md-chip-list>
                     <md-chip>{{item.voteValue}}</md-chip>
                   </md-chip-list>
                   <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                   <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
-                  <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                   <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
@@ -60,14 +61,13 @@
                 <div class="item-container">
                   <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
                   <md-input-container>
-                    <input mdInput #itemName [value]="item.name" (keyup.enter)="updateItemName(item.$key, itemName)">
+                    <input mdInput #itemName [value]="item.name" maxlength="48" (keyup.enter)="updateItemName(item.$key, itemName)">
                   </md-input-container>
                   <!-- {{ item.name }} -->
                   <!--{{item.index}} {{item.$key}}>-->
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
-                    <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                     <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
                   </div>
                 </div>
@@ -78,8 +78,8 @@
 
           <div class="item-container waffle-input">
             <md-input-container>
-              <input mdInput #newitem placeholder="Buy saint emilion wine!" maxlength="64" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
-              <md-hint align="end">{{newitem.value.length}} / 64</md-hint>
+              <input mdInput #newitem placeholder="Buy saint emilion wine!" maxlength="48" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
+              <md-hint align="end">{{newitem.value.length}} / 48</md-hint>
             </md-input-container>
           </div>
         </md-list>
