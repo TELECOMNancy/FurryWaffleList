@@ -33,7 +33,7 @@
       </md-card-header>
 
       <div class="waffle-list-illustration">
-        <img [src]="(list | async)?.picture ? (list | async)?.picture : 'http://i.imgur.com/Ajlyv.jpg'">
+        <img [src]="(list | async)?.picture ? (list | async)?.picture : 'https://s-media-cache-ak0.pinimg.com/originals/23/4d/cc/234dcc371d76cd8fbe531a74110483e9.png'">
       </div>
 
       <md-card-content>
@@ -41,7 +41,7 @@
           <md-list-item *ngFor="let item of itemElements | async">
             <ng-container *ngIf="item" >
               <div *ngIf="(list | async)?.vote == true ; else elseBlock" class="item-container">
-                <!--{{item.index}}--> {{ item.name }}
+                {{ item.name }} 
                 <div class="item-controls">
                   <md-chip-list>
                     <md-chip>{{item.voteValue}}</md-chip>
@@ -51,6 +51,7 @@
                   </ng-container>
                   <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                   <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
+                  <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                   <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
@@ -66,6 +67,7 @@
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
+                    <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                     <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
                   </div>
                 </div>
