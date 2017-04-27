@@ -4,6 +4,13 @@
 
 #waffle-list-container {
     padding: 5% 25%;
+//    min-width: 384px;
+}
+
+md-card-header md-input-container {
+    font-size: 1.6em;
+    margin-top: -20px;
+    margin-left: 5px;
 }
 
 .hasVoted {
@@ -91,6 +98,9 @@ md-icon {
     align-content: center;
     height: 100%;
     float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 md-chip-list {
@@ -116,6 +126,7 @@ md-chip-list {
 
 @media screen and (max-width: 400px) {
     #waffle-list-container {
-        padding: 8% 5%;
+//        padding: 8% 2%;
+        min-width: 320px;
     }
 }
