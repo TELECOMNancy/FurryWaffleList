@@ -70,7 +70,7 @@
                     <input mdInput #itemName [value]="item.name" maxlength="48" (keyup.enter)="updateItemName(item.$key, itemName)">
                   </md-input-container>
                   <!-- {{ item.name }} -->
-                  <!--{{item.index}} {{item.$key}}>-->
+                  {{item.index}}
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
