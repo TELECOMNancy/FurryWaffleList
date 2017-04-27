@@ -70,7 +70,7 @@
                     <input mdInput #itemName [value]="item.name" maxlength="48" (keyup.enter)="updateItemName(item.$key, itemName)">
                   </md-input-container>
                   <!-- {{ item.name }} -->
-                  {{item.index}}
+                
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
@@ -84,7 +84,7 @@
 
           <div class="item-container waffle-input">
             <md-input-container>
-              <input mdInput #newitem placeholder="Buy saint emilion wine!" maxlength="48" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
+              <input mdInput #newitem placeholder="Add an element" maxlength="48" (keyup.enter)="addItem($event)" [(ngModel)]="itemInput">
               <md-hint align="end">{{newitem.value.length}} / 48</md-hint>
             </md-input-container>
           </div>
