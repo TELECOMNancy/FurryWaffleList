@@ -199,7 +199,7 @@ export class ListComponent implements OnInit {
       data: {
         key: this.key,
         list: this.list,
-        uid: this.uid  
+        uid: this.uid
     }
     }
     const dialogRef = this.dialog.open(SettingsComponent, config)
@@ -216,6 +216,10 @@ export class ListComponent implements OnInit {
         this.router.navigate(['/'])
     }
     })
+  }
+
+  editElement(itemKey: string) {
+    console.log('Edition de ' + itemKey)
   }
 
 export2CSV() {

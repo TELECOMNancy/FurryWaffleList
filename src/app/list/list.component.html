@@ -51,6 +51,7 @@
                   </ng-container>
                   <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                   <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
+                  <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                   <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
@@ -62,6 +63,7 @@
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
+                    <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                     <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
                   </div>
                 </div>
