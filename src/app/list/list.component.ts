@@ -10,6 +10,7 @@ import { SignInService } from '../providers/sign-in.service'
 import { UsersService } from '../providers/users.service'
 import {MdProgressSpinnerModule} from '@angular/material'
 import { CsvExport } from '../csv-export'
+import 'rxjs/add/operator/first'
 
 @Component({
   selector: 'app-list',
@@ -54,9 +55,15 @@ export class ListComponent implements OnInit {
     this.list.subscribe(l => {
       this.checkAuthorization(l)
       this.processVotes(l)
+      this.initLastIndex()
     })
   }
 
+  initLastIndex() {
+    this.itemElements.first().subscribe(item => {
+      this.lastIndex = item[item.length - 1].index + 1
+    })
+  }
 
   processVotes(l: any) {
     if (l.vote) {
@@ -135,48 +142,22 @@ export class ListComponent implements OnInit {
   }
 
   increaseIndex(itemkey: string, index: number) {
-    this.itemElements.subscribe( items => {
-      //this.service.getItemsObject(this.key).subscribe(items => {
-
+    this.itemElements.first().subscribe( items => {
         const source = items.find(x => x.$key === itemkey)
         const dest = items.find(x => x.index === source.index - 1)
-        console.log(source)
-        console.log(dest)
-        //this.itemElements.update(source.$key, {index: source.index - 1 })
-        //this.itemElements.update(dest.$key, {index: source.index})
-        //items
+
+        this.itemElements.update(source.$key, {index: source.index - 1 })
+        this.itemElements.update(dest.$key, {index: source.index})
     })
-
-    this.itemElements.subscribe( items => {
-      //this.service.getItemsObject(this.key).subscribe(items => {
-
-        const source = items.find(x => x.$key === itemkey)
-        const dest = items.find(x => x.index === index - 1)
-        console.log(source)
-        console.log(dest)
-        //this.itemElements.update(dest.$key, {index: index})
-        //items
-    })
-
-      /*for (let i = 0; i < items.length; i++) {
-        if (items[i].index === index - 1) {
-          const newIndex = index - 1
-          this.itemElements.update(items[i].$key, {index: index })
-          console.log('Item1: ' + itemkey )
-          this.itemElements.update(itemkey, {index: newIndex}) // <-- plantage au 2ème
-          break
-        }
-      }*/
-    //})
   }
 
   decreaseIndex(itemkey: string, index: number) {
-    this.itemElements.forEach( items => {
-      items.forEach(newItem => {
-        if (newItem.index === index + 1) {
-          this.increaseIndex(newItem.$key, index + 1)
-        }
-      })
+    this.itemElements.first().subscribe( items => {
+        const source = items.find(x => x.$key === itemkey)
+        const dest = items.find(x => x.index === source.index + 1)
+
+        this.itemElements.update(source.$key, {index: source.index + 1 })
+        this.itemElements.update(dest.$key, {index: source.index})
     })
   }
 
@@ -199,7 +180,7 @@ export class ListComponent implements OnInit {
       data: {
         key: this.key,
         list: this.list,
-        uid: this.uid  
+        uid: this.uid
     }
     }
     const dialogRef = this.dialog.open(SettingsComponent, config)

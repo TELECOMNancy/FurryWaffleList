@@ -67,7 +67,8 @@ export class WelcomeComponent implements OnInit {
         this.af.auth.subscribe(authData => {
           this.uid = authData.uid
         })
-        id = this.lists.push({name: listName, desc: listDesc, picture: listImg, vote: voteValue, private: this.private, owner: this.uid}).key
+        id = this.lists.push({name: listName, desc: listDesc, picture: listImg, vote: voteValue,
+          private: this.private, owner: this.uid}).key
         this.router.navigate(['/private-lists/' + id])
       } else if (this.private === false) {
         id = this.lists.push({name: listName, desc: listDesc, picture: listImg , vote: voteValue, private: this.private}).key
