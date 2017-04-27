@@ -49,6 +49,9 @@
                   <ng-container *ngIf= "uid">
                     <md-icon class="hover-effect"[class.hasVoted]="checkVoted(item)" (click)="toggleVote(item, checkVoted(item))">thumb_up</md-icon>
                   </ng-container>
+                  <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
+                  <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
+                  <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                   <md-icon class="hover-effect" (click)="deleteElement(item.$key, checkVoted(item))">clear</md-icon>
                 </div>
               </div>
@@ -56,10 +59,11 @@
               <ng-template #elseBlock>
                 <div class="item-container">
                   <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
-                  {{ item.name }} {{ item.index }}
+                  {{ item.name }}
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>
+                    <md-icon class="hover-effect" (click)="editElement(item.$key)">create</md-icon>
                     <md-icon class="hover-effect" (click)="deleteElement(item.$key)">clear</md-icon>
                   </div>
                 </div>

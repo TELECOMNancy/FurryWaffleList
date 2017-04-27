@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
-import { FormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AngularFireModule } from 'angularfire2'
-
 import { ListComponent } from './list.component'
 import { SharedModule } from '../shared/shared.module'
 import { ListsService } from '../providers/lists.service'
@@ -23,12 +21,11 @@ import { ConfirmDeletionDialogComponent } from './confirm-deletion-dialog/confir
   imports: [
     BrowserModule,
     SharedModule,
-    FormsModule,
     HttpModule,
+    FormsModule,
     ReactiveFormsModule,
-    SharedModule
   ],
-  providers: [ ListsService, SignInService, UsersService],
+  providers: [ ListsService, SignInService, UsersService ],
   entryComponents: [ SettingsComponent, ConfirmDeletionDialogComponent ]
 })
 export class ListModule { }

@@ -13,14 +13,28 @@ import { FormControl } from '@angular/forms'
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit {
 
-  filteredEmails: any
+  filteredUsers: Observable<any[]>
+  emailControl: FormControl
   users: any
+  usersList: any
 
   constructor(private dialogRef: MdDialogRef<SettingsComponent>, @Inject(MD_DIALOG_DATA) public data: any,
   public service: UsersService, public serviceList: ListsService) {
     this.users = this.service.getUsersObject()
+    this.service.getUsers().subscribe(u => this.usersList = u)
+    this.emailControl = new FormControl()
+  }
+
+  ngOnInit(): void {
+    this.filteredUsers = this.emailControl.valueChanges
+      .startWith(null)
+      .map(val => this.filter(val) )
+  }
+
+  filter(val: string): string[] {
+    return this.usersList.filter(user => new RegExp(`^${val}`, 'gi').test(user.email))
   }
 
   deleteUser(userID) {
@@ -28,13 +42,12 @@ export class SettingsComponent {
     if (this.data.uid === userID) {
       this.dialogRef.close()
     }
-}
+  }
 
   addEmail(event) {
     this.service.getUsers().subscribe( tmp => {
       const u = tmp.find(t => t.email === event.target.value)
       if (u) {
-        console.log(u.id)
         this.service.addCustomKey(this.data.key, u.id, u.email)
         event.target.value = ''
       }

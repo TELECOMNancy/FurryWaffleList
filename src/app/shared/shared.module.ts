@@ -16,7 +16,6 @@ import { MdAutocompleteModule } from '@angular/material'
 import { MdDialog, MdDialogRef } from '@angular/material'
 import { MdProgressSpinnerModule } from '@angular/material'
 import { ListItemModule } from './list-item/list-item.module'
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { KeysPipe } from './keys.pipe'
 

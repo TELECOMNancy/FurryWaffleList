@@ -1,4 +1,5 @@
-$height: 300px;
+@import 'theme';
+$height: 500px;
 
 :host {
     text-align: center;
@@ -30,7 +31,7 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 500px;
+    height: $height;
     z-index: 0;
     .background {
         display: flex;
@@ -69,13 +70,16 @@ h1 {
 
 .waffle-form {
     width: 30%;
-    padding: 10px;
+    height: $height;
+    box-sizing: border-box;
+    padding: 30px;
     display: flex;
     position: relative;
     justify-content: center;
     flex-direction: column;
-    border: 2px solid rgb(29, 164, 86);
-
+    border-bottom: 2px solid $dark-green;
+    //border-top: 2px solid darkgreen;
+    box-shadow: none !important;
     &:after {
         content: '';
         position: absolute;
@@ -145,8 +149,29 @@ h1 {
     }
 }
 
+
+@media screen and (max-width: 1200px) {
+    .waffle-form {
+        width: 50%;
+    }
+}
+
 @media screen and (max-width: 640px) {
     .about {
         width: 80%;
+    }
+
+    .waffle-form {
+        width: 70%;
+    
+        .options section:first-child {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            md-checkbox {
+                margin-top: 20px;
+                text-align: left;
+            }
+        }
     }
 }
