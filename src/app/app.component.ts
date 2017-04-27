@@ -1,5 +1,7 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
+import { SignInComponent } from './sign-in/sign-in.component'
+
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,9 @@ onclickLists() {
   this.router.navigate(['/lists'])
 }
 
-onclickSign() {
-  this.router.navigate(['/signin'])
+onClickSignIn(provider: string) {
+
 }
+
+
 }

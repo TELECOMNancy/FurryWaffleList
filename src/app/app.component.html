@@ -7,7 +7,6 @@
 		<div class="sidenav_menu">
 			<md-list>
 				<div (click)="sidenav.toggle()"><a routerLink="/"><button md-button>Home</button></a></div>
-				<div (click)="sidenav.toggle()"><a routerLink="/signin"><button md-button>Sign In</button></a></div>
 				<md-divider></md-divider>
 
 
@@ -34,6 +33,9 @@
 				<a href="/"><img src="assets/logo_simple_right.png"></a>
 			</span>
 			<p id="app-title">Furry Waffle Amazing Lists</p>
+				<div class="menuButton">
+					<app-sign-in></app-sign-in>
+				</div>
 		</md-toolbar>
 
 		<router-outlet></router-outlet>

@@ -94,6 +94,8 @@ h1 {
     md-card-title {
         z-index: 30;
     }
+
+
     md-card-content {
         width: 100%;
         z-index: 30;
@@ -119,6 +121,7 @@ h1 {
 
     textarea {
         width: 100%;
+        resize: none;
         //height: 300px;
     }
 }
@@ -133,6 +136,10 @@ h1 {
     margin: auto;
     width: 40%;
     text-align: left;
+    h1 {
+        //color: $dark-green;
+        padding: 20px;
+    }
     h1, h2{
         font-weight: 300;
     }
@@ -140,14 +147,42 @@ h1 {
         align-self: flex-start;
     }
 
+    p {
+        margin-right: auto;
+    }
+
     #charoy {
-        margin: 50px;
+        margin: 20px;
         width: 200px;
         height: 200px;
-        //height: auto; 
-        //filter: blur(5px);
     }
+
+    .icons-tech {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        padding: 30px;
+        justify-content: space-around;
+        a {
+            width: 30%;
+            img {
+                width: 100%;
+            }
+        }
+    }    
 }
+
+
+.devs {
+    display: inline-block;
+    border-radius: 50%;
+}
+
+img {
+    border-radius: 40px;
+    border: 2px solid $dark-green;
+}
+
 
 
 @media screen and (max-width: 1200px) {
@@ -175,3 +210,4 @@ h1 {
         }
     }
 }
+
