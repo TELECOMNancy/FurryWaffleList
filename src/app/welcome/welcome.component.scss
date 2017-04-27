@@ -182,7 +182,55 @@ h1 {
     }    
 }
 
+.devs {
+    display: inline-block;
+    border-radius: 50%;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
+    .container{
+        display: flex;
+        flex-direction: column;
+
+        .avatar{
+            width: 120px;
+            height: 120px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-size: cover;
+            border: 5px solid $dark-green;
+        }
+
+        .yann{
+          background-image: url('/assets/yann.jpg');
+        }
+
+        .yannick{
+          background-image: url('/assets/yannick.jpg');
+        }
+
+        .quentin{
+          background-image: url('/assets/quentin.jpg');
+        }
+
+        .eliot{
+          background-image: url('/assets/eliot.jpg');
+        }
+
+        p {
+            margin: auto;
+        }
+    }
+}
+
+img {
+    border-radius: 40px;
+    border: 2px solid $dark-green;
+}
 
 
 @media screen and (max-width: 1200px) {
