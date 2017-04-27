@@ -9,15 +9,6 @@ $height: 500px;
     align-items: center;
 }
 
-.devs {
-    display: inline-block;
-    //border-radius: 50%;
-    //background: orange;
-    img {
-        border-radius: 50%;
-    }
-}
-
 h1 {
     text-align: center;
 }
@@ -198,9 +189,7 @@ h1 {
         .avatar{
             width: 120px;
             height: 120px;
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-bottom: 10px;
+            margin: 10px;
             background-size: cover;
             border: 5px solid $dark-green;
         }
