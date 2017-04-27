@@ -15,6 +15,12 @@ html, body {
     border-radius: 50%;
 }
 
+.options {
+    md-chip {
+        margin: auto;
+    }
+}
+
 .spinner-container {
      position: absolute;
     top:0;

@@ -19,7 +19,8 @@ import { SignInComponent } from './sign-in/sign-in.component'
 import { ListsModule } from './lists/lists.module'
 import { SafeHtmlPipe } from './safe-html.pipe'
 import { JSONtestComponent } from './jsontest/jsontest.component';
-import { MainElementsComponent } from './main-elements/main-elements.component'
+import { MainElementsComponent } from './main-elements/main-elements.component';
+import { WaffleFormComponent } from './waffle-form/waffle-form.component'
 
 
 export const firebaseConfig = {
@@ -38,6 +39,7 @@ export const firebaseConfig = {
     SafeHtmlPipe,
     JSONtestComponent,
     MainElementsComponent,
+    WaffleFormComponent,
   ],
   imports: [
     BrowserModule,

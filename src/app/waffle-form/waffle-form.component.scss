@@ -1,0 +1,61 @@
+@import 'theme';
+
+.waffle-form {
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    box-sizing: border-box;
+    padding: 10%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    //border-bottom: 2px solid $dark-green;
+    border: 2px solid $dark-green;
+    //border-top: 2px solid darkgreen;
+    //box-shadow: none !important;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.7);
+        z-index: 1;
+    }
+
+    md-card-title {
+        z-index: 30;
+    }
+
+
+    md-card-content {
+        width: 100%;
+        z-index: 30;
+    }
+
+    section {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 60px;
+        button {
+            margin: auto;
+        }
+        & * {
+            width: 100%;
+        }
+    }
+    section:last-child {
+        margin-top: 30px;
+    }
+
+    textarea {
+        width: 100%;
+        resize: none;
+        //height: 300px;
+    }
+}

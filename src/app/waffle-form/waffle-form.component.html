@@ -1,0 +1,45 @@
+  <md-card class="waffle-form">
+    <md-card-title>
+      Create your list !
+    </md-card-title>
+    
+    <md-card-content>
+
+      <section>
+        <md-input-container>
+          <input #listName mdInput placeholder="List title">
+        </md-input-container>
+      </section>
+
+      <section style="height: auto">
+        <md-input-container>
+          <textarea mdAutosizeMinRows="4" #listDesc mdInput maxlength="140" mdTextareaAutosize placeholder="Description"></textarea>
+          <md-hint align="end">{{listDesc.value.length}} / 140</md-hint>
+        </md-input-container>
+      </section>
+
+      <section>
+        <md-input-container>
+          <input #listImg mdInput (keyup)="checkImage($event)" placeholder="Picture URL for the list">
+        </md-input-container>
+      </section>
+
+      <div class="options">
+        <section>
+          <md-chip-list *ngIf="errorMessage">
+            <md-chip color="warn" selected="true">{{ errorMessage }}</md-chip>
+          </md-chip-list>
+        </section>
+        
+        <section>
+          <md-checkbox #voteValue>Enable the vote</md-checkbox>
+          <md-checkbox [(ngModel)]="private">Make the list private</md-checkbox>
+        </section>
+
+        <section>
+          <button (click)="createList(listName.value, listDesc.value, listImg.value, voteValue.checked)" md-raised-button>Let's list it!</button>
+        </section>
+
+      </div>
+    </md-card-content>
+  </md-card>
