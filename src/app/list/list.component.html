@@ -38,8 +38,8 @@
       <div class="waffle-list-illustration">
         <img [src]="(list | async)?.picture ? (list | async)?.picture : 'https://s-media-cache-ak0.pinimg.com/originals/23/4d/cc/234dcc371d76cd8fbe531a74110483e9.png'">
       </div>
-      <ng-container *ngIf = "!uid" >
-         <md-chip color='warn' selected="true">You must be logged to vote.</md-chip>
+      <ng-container *ngIf = "!uid && (list | async)?.vote == true"  >
+         <md-chip class="voteWarning" color='warn' selected="true">You must be logged to vote.</md-chip>
       </ng-container>
 
       <md-card-content>
