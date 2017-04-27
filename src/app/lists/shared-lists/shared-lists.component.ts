@@ -13,7 +13,7 @@ export class SharedListsComponent implements OnInit {
   lists: FirebaseListObservable<any[]>
   keyEditedList = ''
   userInfo: any
-
+  charoy = 'inactive'
 
   constructor(private af: AngularFire, private router: Router, private signin: SignInService) { }
 
@@ -35,6 +35,10 @@ export class SharedListsComponent implements OnInit {
       return list.shared.hasOwnProperty(this.userInfo)
     }
     return false
+  }
+
+  toggle(event) {
+    this.charoy = (event.x > window.innerWidth / 2) ? 'inactive' : 'active'
   }
 
 }

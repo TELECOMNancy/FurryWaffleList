@@ -1,24 +1,10 @@
 import { Component, OnInit } from '@angular/core'
-import { trigger, state, style, animate, transition } from '@angular/animations'
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  animations: [
-    trigger('charoyState', [
-      state('inactive', style({
-        background: 'url(assets/logo_simple_right.png) no-repeat',
-        backgroundSize: 'contain',
-        backgroundPosition: 'center'
-      })),
-      state('active', style({
-        background: 'url(assets/logo_simple.png) no-repeat',
-        backgroundSize: 'contain',
-        backgroundPosition: 'center'
-      })),
-    ])
-  ]
+
 })
 export class WelcomeComponent implements OnInit {
   leftGifs = [
@@ -33,9 +19,9 @@ export class WelcomeComponent implements OnInit {
 
   leftGif: any
   rightGif: any
-  charoy: String = 'active'
   picture
-
+  charoy = 'inactive'
+  notValid = true
   constructor() { }
 
   ngOnInit() {
@@ -43,15 +29,22 @@ export class WelcomeComponent implements OnInit {
     this.rightGif = this.rightGifs[Math.floor(Math.random() * this.rightGifs.length)]
   }
 
-  toggle(event) {
-    this.charoy = (event.x > window.innerWidth / 2) ? 'inactive' : 'active'
-  }
-
   updateUrl(event) {
     if (event) {
-      this.picture = event.type === 'error' ?
-      this.rightGifs[Math.floor(Math.random() * this.rightGifs.length)] : event
+     if (event.type === 'error') {
+      this.rightGifs[Math.floor(Math.random() * this.rightGifs.length)]
+      this.notValid = true
+     } else {
+      this.picture = event
+      this.notValid = false
+     }
+    } else {
+    this.notValid = true
     }
+  }
+
+  toggle(event) {
+    this.charoy = (event.x > window.innerWidth / 2) ? 'inactive' : 'active'
   }
 
 }

@@ -1,5 +1,13 @@
-<p>
-  T'es perdu mon lapin ?
-</p>
-
-<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--hzrMZk4o--/c_scale,f_auto,fl_progressive,q_auto,w_380/https://github.com/thepracticaldev/orly-full-res/blob/master/fomo-big.png%3Fraw%3Dtrue" alt="">
+<div class="not-found" [ngStyle]="style">
+  <span class="overlay"></span>
+  <h1>
+    404 Waffle not found !
+  </h1>
+</div>
+<div class="philosophy">
+  <div *ngFor="let img of orly">
+    <a href="https://github.com/thepracticaldev/orly-full-res" target="_blank">
+      <img [src]="img" alt="">
+    </a>
+  </div>
+</div>

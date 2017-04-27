@@ -1,13 +1,10 @@
-.lists-container {
-    display: flex;
-    justify-content: flex-start;
-    align-content: flex-start;
-    margin: 2px;
-    padding: 12px;
-    flex-wrap: wrap;
-}
-
 md-card {
     display: inline-block;
     margin: 6px;
+}
+
+
+md-chip-list {
+    //text-align: center;
+    margin: auto;
 }

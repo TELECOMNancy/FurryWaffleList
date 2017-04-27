@@ -18,6 +18,7 @@ import { MdProgressSpinnerModule } from '@angular/material'
 import { ListItemModule } from './list-item/list-item.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { KeysPipe } from './keys.pipe'
+import { WaffleComponent } from './waffle/waffle.component'
 
 
 const modules = [
@@ -42,10 +43,10 @@ const modules = [
 
 @NgModule({
   imports: modules,
-  exports: [  KeysPipe, modules, ListItemModule],
+  exports: [  KeysPipe, modules, ListItemModule, WaffleComponent ],
   // declarations: [],
   providers: [MdDialog],
-  declarations: [KeysPipe],
+  declarations: [KeysPipe, WaffleComponent],
 })
 
 export class SharedModule { }

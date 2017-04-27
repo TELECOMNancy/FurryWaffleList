@@ -15,9 +15,10 @@ export class WaffleFormComponent implements OnInit {
   private: Boolean
   lists: FirebaseListObservable<any[]>
   uid: String
-  picture = ''
+  inputpicture = ''
 
   @Output() onUrl = new EventEmitter<string>()
+  @Input() isValid
 
   constructor(private af: AngularFire, private router: Router, private signin: SignInService, private http: Http) {
     this.lists = af.database.list('/lists')
@@ -29,6 +30,7 @@ export class WaffleFormComponent implements OnInit {
   }
 
   createList(listName: String, listDesc: String, listImg: String,  voteValue: boolean) {
+     //console.log(isValid)
      if (listName.length > 0) {
       this.errorMessage = ''
       let id = ''
@@ -36,11 +38,12 @@ export class WaffleFormComponent implements OnInit {
         this.af.auth.subscribe(authData => {
           this.uid = authData.uid
         })
-        id = this.lists.push({name: listName, desc: listDesc, picture: listImg, vote: voteValue,
+        id = this.lists.push({name: listName, desc: listDesc, picture: this.isValid ? listImg : null, vote: voteValue,
           private: this.private, owner: this.uid, lastIndex: 0}).key
         this.router.navigate(['/private-lists/' + id])
       } else if (this.private === false) {
-        id = this.lists.push({name: listName, desc: listDesc, picture: listImg , vote: voteValue, private: this.private,
+        id = this.lists.push({name: listName, desc: listDesc, picture: this.isValid ? listImg : null,
+           vote: voteValue, private: this.private,
         lastIndex: 0}).key
         this.router.navigate(['lists/' + id])
       } else {
@@ -52,8 +55,8 @@ export class WaffleFormComponent implements OnInit {
   }
 
   checkImage(e) {
-    this.picture = e.target.value.match(/\.(png|jpg|gif|svg|jpeg)$/) ? e.target.value : null
-    this.onUrl.emit(this.picture)
+    const res = e.target.value.match(/\.(png|jpg|gif|svg|jpeg)$/) ? e.target.value : null
+    this.onUrl.emit(res)
   }
 
 }

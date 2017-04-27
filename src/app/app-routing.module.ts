@@ -45,16 +45,16 @@ const appRoutes: Routes = [
   {
     path: 'shared-lists',
     component: SharedListsComponent
-  }
-        ]},
-        {
-    path: 'lists/:key/json',
-    component: JSONtestComponent
   },
   {
     path: '**',
     component: NotFoundComponent
   }
+  ]},
+  {
+    path: 'lists/:key/json',
+    component: JSONtestComponent
+  },
 ]
 
 @NgModule({

@@ -15,6 +15,7 @@ export class PrivateListsComponent implements OnInit {
   lists: FirebaseListObservable<any[]>
   keyEditedList = ''
   userInfo: any
+  charoy = 'inactive'
 
 
   constructor(private af: AngularFire, private router: Router, private signin: SignInService) {
@@ -36,6 +37,10 @@ export class PrivateListsComponent implements OnInit {
 
   onSelect(list: any): void {
     this.router.navigate(['private-lists/' + list.$key])
+  }
+
+  toggle(event) {
+    this.charoy = (event.x > window.innerWidth / 2) ? 'inactive' : 'active'
   }
 
 }

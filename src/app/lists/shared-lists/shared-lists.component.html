@@ -1,8 +1,10 @@
-<div class="lists-container">
+<div class="lists-container" (mousemove)="toggle($event)">
 	<ng-container *ngIf = "!userInfo">
 		<md-chip-list>
 		 <md-chip color='warn' selected="true">You must be logged to view lists shared with you.</md-chip>
 	 </md-chip-list>
+	 <waffle [charoy]="charoy"></waffle>
+
 	</ng-container>
 	<ng-container *ngFor="let list of lists | async">
 		<ng-container *ngIf="checkAccess(list)">
