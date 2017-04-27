@@ -9,6 +9,15 @@ $height: 500px;
     align-items: center;
 }
 
+.devs {
+    display: inline-block;
+    //border-radius: 50%;
+    //background: orange;
+    img {
+        border-radius: 50%;
+    }
+}
+
 h1 {
     text-align: center;
 }
@@ -172,16 +181,6 @@ h1 {
     }    
 }
 
-
-.devs {
-    display: inline-block;
-    border-radius: 50%;
-}
-
-img {
-    border-radius: 40px;
-    border: 2px solid $dark-green;
-}
 
 
 
