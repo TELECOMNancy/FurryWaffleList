@@ -32,9 +32,11 @@
       </section>
 
       <div class='options'>
-        <md-chip color="warn" selected="true">{{ errorMessage }}</md-chip>
+  
+        <md-chip-list *ngIf="errorMessage" style="margin: auto">
+          <md-chip color="warn" selected="true">{{ errorMessage }}</md-chip>
+        </md-chip-list>
         
-
         <section>
           <md-checkbox #voteValue>Enable the vote</md-checkbox>
           <md-checkbox [(ngModel)]="private">Make the list private</md-checkbox>
