@@ -1,37 +1,27 @@
 <section [ngSwitch]="isAuth">
 
-  <h3 *ngSwitchCase="false">Choose your Federated Identity Provider</h3>
+  <ng-container *ngSwitchCase="false">
 
-  <md-card *ngSwitchCase="false">
+    <md-menu #appMenu="mdMenu">
+					<button md-menu-item (click)="login('google')"> With <img width="25" src="assets/google-logo.png"/> </button>
+					<button md-menu-item (click)="login('facebook')"> With <img width="25" src="assets/facebook-logo.png"/> </button>
+					<button md-menu-item (click)="login('github')"> With <img width="25" src="assets/github-logo.png"/> </button>
+				</md-menu>
+				<button  md-icon-button [mdMenuTriggerFor]="appMenu">
+					<md-icon>person</md-icon>
+				</button>
 
-    <button md-raised-button (click)="login('google')">
-      <img width="30" src="assets/google-logo.png" />Use My Google Account
-    </button>
+  </ng-container>
 
-    <button md-raised-button (click)="login('facebook')">
-      <img width="30" src="assets/facebook-logo.png" />Use My Facebook Account
-    </button>
-
-    <button md-raised-button (click)="login('github')">
-      <img width="30" src="assets/github-logo.png" />Use My Github Account
-    </button>
-
-  </md-card>
-
-  <md-card *ngSwitchCase="true">
-  <md-card-header>
-    <div md-card-avatar class="waffler-picture">
-        <img [src]='user.avatar' alt="">
-      </div>
-    <md-card-title>{{ user.name }}</md-card-title>
-    <md-card-subtitle>{{ user.email || '(no email)' }}</md-card-subtitle>
-  </md-card-header>
-  <md-card-actions>
-    <button md-raised-button (click)="logout()">
-         Logout
-    </button>
-  </md-card-actions>
-</md-card>
+  <ng-container *ngSwitchCase="true">
+  
+				<md-menu #appMenu2="mdMenu">
+					<button md-menu-item (click)="logout()"> Sign out </button>
+				</md-menu>
+				<button md-icon-button [mdMenuTriggerFor]="appMenu2">
+					<md-icon>person</md-icon>
+				</button>
+  </ng-container>
 
 
 </section>
