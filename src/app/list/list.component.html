@@ -58,7 +58,11 @@
               <ng-template #elseBlock>
                 <div class="item-container">
                   <md-checkbox [checked]=item.checked (click)="updateItem(item.$key, item.checked)"></md-checkbox>
-                  {{ item.name }} <!--{{item.index}} {{item.$key}}>-->
+                  <md-input-container>
+                    <input mdInput #itemName [value]="item.name" (keyup.enter)="updateItemName(item.$key, itemName)">
+                  </md-input-container>
+                  <!-- {{ item.name }} -->
+                  <!--{{item.index}} {{item.$key}}>-->
                   <div class="item-controls">
                     <md-icon class="hover-effect" (click)="increaseIndex(item.$key, item.index)">keyboard_arrow_up</md-icon>
                     <md-icon class="hover-effect" (click)="decreaseIndex(item.$key, item.index)">keyboard_arrow_down</md-icon>

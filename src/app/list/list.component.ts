@@ -134,6 +134,10 @@ export class ListComponent implements OnInit {
     this.itemElements.update(itemkey, {index: index})
   }
 
+  updateItemName(itemkey: string, inputField) {
+    this.itemElements.update(itemkey, {name: inputField.value})
+  }
+
   increaseIndex(itemkey: string, index: number) {
     this.itemElements.subscribe( items => {
       //this.service.getItemsObject(this.key).subscribe(items => {
