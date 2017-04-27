@@ -141,6 +141,10 @@ export class ListComponent implements OnInit {
     this.itemElements.update(itemkey, {index: index})
   }
 
+  updateItemName(itemkey: string, inputField) {
+    this.itemElements.update(itemkey, {name: inputField.value})
+  }
+
   increaseIndex(itemkey: string, index: number) {
     this.itemElements.first().subscribe( items => {
         const source = items.find(x => x.$key === itemkey)

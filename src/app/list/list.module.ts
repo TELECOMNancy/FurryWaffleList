@@ -11,7 +11,6 @@ import { UsersService } from '../providers/users.service'
 import { SettingsComponent } from './settings/settings.component'
 import { ConfirmDeletionDialogComponent } from './confirm-deletion-dialog/confirm-deletion-dialog.component'
 
-
 @NgModule({
   declarations: [
     ListComponent,
