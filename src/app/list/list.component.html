@@ -9,7 +9,10 @@
           <img [src]="u[l.owner] ? u[l.owner].avatar : '/assets/logo_simple_right.png'" alt="">
         </div>
         <md-card-title>
-          {{ l.name }}
+          <md-input-container>
+            <input mdInput #lName [value]="l.name" (keyup.enter)="updateListName(lName)">
+          </md-input-container>
+          <!-- {{ l.name }} -->
         </md-card-title>
         <md-card-subtitle>{{ l.desc ? l.desc : '&zwnj;' }}</md-card-subtitle>
 
