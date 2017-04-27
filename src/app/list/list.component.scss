@@ -99,7 +99,14 @@ md-chip-list {
     align-items: center;
     margin-right: 20px;
 }
+.voteWarning
+{
+  display: block;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
+}
 
 @media screen and (max-width: 640px) {
     #waffle-list-container {
