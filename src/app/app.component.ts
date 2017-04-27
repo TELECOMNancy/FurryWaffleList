@@ -15,9 +15,6 @@ onclickLists() {
   this.router.navigate(['/lists'])
 }
 
-onClickSignIn(provider: string) {
-
-}
 
 
 }

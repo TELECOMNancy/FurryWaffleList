@@ -3,9 +3,9 @@
   <ng-container *ngSwitchCase="false">
 
     <md-menu #appMenu="mdMenu">
-					<button md-menu-item (click)="login('google')"> With <img width="25" src="assets/google-logo.png"/> </button>
-					<button md-menu-item (click)="login('facebook')"> With <img width="25" src="assets/facebook-logo.png"/> </button>
-					<button md-menu-item (click)="login('github')"> With <img width="25" src="assets/github-logo.png"/> </button>
+					<button md-menu-item (click)="login('google')" style="text-align: center"><img width="25" src="assets/google-logo.png"/> </button>
+					<button md-menu-item (click)="login('facebook')" style="text-align: center"><img width="25" src="assets/facebook-logo.png"/> </button>
+					<button md-menu-item (click)="login('github')" style="text-align: center"><img width="25" src="assets/github-logo.png"/> </button>
 				</md-menu>
 				<button  md-icon-button [mdMenuTriggerFor]="appMenu">
 					<md-icon>person</md-icon>

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2'
 import { ListsService } from '../providers/lists.service'
@@ -13,16 +12,15 @@ export class JSONtestComponent implements OnInit {
 	key: string
 	list: FirebaseObjectObservable<any>
 	itemElements: FirebaseListObservable<any[]>
-	json: string
+	listJson: any
 
 	constructor(private service: ListsService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
 		this.key = this.route.snapshot.params['key']
-		this.json = 'coucu'
-		this.service.getList(this.key).subscribe(function(l)  {
-			this.json = JSON.stringify(l)
-			console.log(this.json)	
+        this.list = this.service.getList(this.key)
+		this.list.subscribe(l => {
+			this.listJson = l
 		})
 	}
 }

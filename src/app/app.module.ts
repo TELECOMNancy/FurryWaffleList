@@ -18,7 +18,8 @@ import { SignInService } from './providers/sign-in.service'
 import { SignInComponent } from './sign-in/sign-in.component'
 import { ListsModule } from './lists/lists.module'
 import { SafeHtmlPipe } from './safe-html.pipe'
-import { JSONtestComponent } from './jsontest/jsontest.component'
+import { JSONtestComponent } from './jsontest/jsontest.component';
+import { MainElementsComponent } from './main-elements/main-elements.component'
 
 
 export const firebaseConfig = {
@@ -36,6 +37,7 @@ export const firebaseConfig = {
     SignInComponent,
     SafeHtmlPipe,
     JSONtestComponent,
+    MainElementsComponent,
   ],
   imports: [
     BrowserModule,

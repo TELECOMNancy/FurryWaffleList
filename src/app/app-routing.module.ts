@@ -9,13 +9,15 @@ import { WelcomeComponent } from './welcome/welcome.component'
 import { SignInComponent } from './sign-in/sign-in.component'
 import { PrivateListsComponent } from './lists/private-lists/private-lists.component'
 import { SharedListsComponent } from './lists/shared-lists/shared-lists.component'
+import { MainElementsComponent } from './main-elements/main-elements.component'
 
 
 const appRoutes: Routes = [
-  {
-    path: '',
-    component: WelcomeComponent
-  },
+  { path: '', component:  MainElementsComponent, children: [
+    {
+      path: '',
+      component: WelcomeComponent
+    },
   {
     path: 'lists/:key',
     component: ListComponent
@@ -23,10 +25,6 @@ const appRoutes: Routes = [
   {
     path: 'private-lists/:key',
     component: ListComponent
-  },
-  {
-    path: 'lists/:key/json',
-    component: JSONtestComponent
   },
   {
     path: 'shared-lists/:key',
@@ -47,6 +45,11 @@ const appRoutes: Routes = [
   {
     path: 'shared-lists',
     component: SharedListsComponent
+  }
+        ]},
+        {
+    path: 'lists/:key/json',
+    component: JSONtestComponent
   },
   {
     path: '**',
