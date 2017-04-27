@@ -40,7 +40,7 @@ export class SignInService {
       return ''
     }
       this.af.auth.subscribe(authData => {
-      console.log(authData)
+      // console.log(authData)
       const uid = authData.uid
       return uid
       })
