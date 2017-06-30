@@ -1,7 +1,7 @@
 # Furry Waffle Amazing Lists
 
 
-[![Build Status](https://travis-ci.org/TELECOMNancy/pweb-2017-team-fomo.svg?branch=master)](https://travis-ci.org/TELECOMNancy/pweb-2017-team-fomo)
+[![Build Status](https://travis-ci.org/TELECOMNancy/FurryWaffleList.svg?branch=master)](https://travis-ci.org/TELECOMNancy/FurryWaffleList)
 
 
 [furrywafflelist.firebaseapp.com](https://furrywafflelist.firebaseapp.com)
